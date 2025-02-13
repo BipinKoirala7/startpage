@@ -1,0 +1,42 @@
+:root {
+  --background: #191a22;
+  --primary: #21232d;
+  --button: #c94343ff;
+  --input: #16171e;
+  --hover: #ffebcd;
+}
+
+::-webkit-scrollbar{
+  background-color: transparent;
+  width: .25rem;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: var(--primary);
+}
+
+#main-wrapper{
+  display: flex;
+}
+
+#main-container{
+  width: 100%;
+  height: 100%;
+  flex: 1 0 87.5%;
+}
+
+#link-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+}
+
+.tooltip-wrapper{
+  width: max-content;
+  transition: ease 0.5s;
+  position: absolute;
+  left: 125%;
+  border: 1px solid var(--input);
+  background-color: var(--primary);
+  border-radius: .5rem;
+  z-index: 50;
+}

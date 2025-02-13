@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind variants;
+
+:root {
+  --background: #191a22;
+  --primary: #21232d;
+  --button: #c94343ff;
+  --input: #16171e;
+  --hover: #ffebcd;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'karla';
+    box-sizing: border-box;
+}
+
+body{
+    height: 100dvh;
+    width:100dvw;
+    background-color: var(--background);
+}
+
+#root{
+    height: 100dvh;
+    width:100dvw;
+}
+
+::-webkit-scrollbar{
+  background-color: transparent;
+  width: .25rem;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: var(--primary);
+}
