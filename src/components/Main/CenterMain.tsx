@@ -9,7 +9,7 @@ function CenterMain() {
   return (
     <div
       id="main-container"
-      className="grid grid-rows-[1fr_1fr_4fr_1fr] overflow-hidden py-4 px-4 gap-8 place-items-center"
+      className="grid grid-rows-[1fr_.75fr_3fr_1fr] overflow-hidden py-6 px-4 gap-8 place-items-center"
     >
       <DateAndTime />
       <SearchBox />
