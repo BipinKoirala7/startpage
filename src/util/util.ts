@@ -1,5 +1,9 @@
 // import Link from "../class/link";
 
+import { useContext } from "react"
+import ModalContext from '../Context/ModalContext';
+import { ModalContextProps } from "../Context/ModalContextProvider";
+
 export async function createNewLink() {
 //  try {
 //   const newLink = new Link(
@@ -54,4 +58,12 @@ export async function checkImageLink(imageUrl:string) {
 
 export function urlLinkClick(url: string) {
   window.open(url, "_blank");
+}
+
+export function useModalContext(){
+  const context = useContext<ModalContextProps | null>(ModalContext);
+  if (!context) {
+    throw new Error("Error occured in the context provider")
+  }
+  return context;
 }
