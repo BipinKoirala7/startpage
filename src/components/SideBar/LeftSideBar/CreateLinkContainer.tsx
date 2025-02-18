@@ -2,9 +2,20 @@ import { TbLinkPlus } from "react-icons/tb";
 import IconButton from "../../UI/Buttons/IconButton";
 import DialogUI from "../../UI/DialogUI";
 import { useState } from "react";
+import { useModalContext } from "../../../util/util";
+import { ModalContextProps } from "../../../Context/ModalContextProvider";
 
 function CreateLinkContainer() {
   const [isOpenDialogBox, setIsOpenDialogBox] = useState<boolean>(false);
+  const {setModalContent}:ModalContextProps = useModalContext();
+  function handleSaveFunction(){
+    setModalContent((
+      <div>
+        the new link is created
+      </div>
+    ))
+    handleCloseFunction();
+  }
   function handleClick() {
     setIsOpenDialogBox(true);
   }
@@ -37,7 +48,7 @@ function CreateLinkContainer() {
               className="px-4 py-2 bg-input border-[1px] border-background rounded-[.25rem] outline-none"
             />
           </div>
-          <button className="border-[1px] border-input hover:bg-accent1 hover:text-primary transition-all rounded-[.25rem] py-2">
+          <button onClick={handleSaveFunction} className="border-[1px] border-input hover:bg-accent1 hover:text-primary transition-all rounded-[.25rem] py-2">
             Save
           </button>
         </div>

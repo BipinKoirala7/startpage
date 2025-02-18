@@ -47,3 +47,52 @@ dialog::backdrop {
   border-radius: .5rem;
   z-index: 50;
 }
+
+#progress-bar{
+  position: absolute;
+  width: 1%;
+  height: 3px;
+  background-color: green;
+  bottom: 0;
+  left: 0;
+  transition: linear .25s;
+}
+
+@keyframes animateProgressBar {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+
+/* #modal-wrapper{
+  animation: modalAnimateIn ease .5s forwards;
+} */
+
+.modalAnimationIn{
+  animation: modalAnimateIn ease .5s forwards;
+}
+
+.modalAnimationOut{
+  animation: modalAnimateOut ease .5s forwards;
+}
+
+@keyframes modalAnimateIn {
+    0%{
+      right: -110%;
+    }
+    100%{
+      right:2.5%;
+    }
+}
+
+@keyframes modalAnimateOut{
+  0%{
+    right: 2.5%;
+  }
+  100%{
+    right: -110%;
+  }
+}

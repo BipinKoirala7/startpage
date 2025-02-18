@@ -10,9 +10,7 @@ export interface ModalContextProps {
 
 export default function ModalContextProvider({ children }: { children: React.ReactNode }) {
   const [modalContent, setModalContent] = useState<ModalContent>(
-    <div>
       <p>this is a message from the modal context provider</p>
-    </div>
     );
 
     const contextValue: ModalContextProps = {
