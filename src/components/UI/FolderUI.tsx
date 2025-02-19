@@ -19,7 +19,7 @@ function FolderUI(props: FolderPropT) {
   }
   return (
     <IconButton
-      className={`w-full h-fit border-[1px] border-primary px-4 py-2 rounded-[.25rem] hover:bg-primary hover:rounded-[.5rem] flex gap-2 ${className}`}
+      className={`w-full h-fit border-[1px] border-secondary px-4 py-2 rounded-[.25rem] hover:bg-secondary hover:rounded-[.5rem] flex gap-2 ${className}`}
       needTooltip={needTooltip}
       tooltipPlaceholder={tooltipPlaceholder}
       onClick={handleCLick}

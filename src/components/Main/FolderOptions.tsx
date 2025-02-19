@@ -75,28 +75,29 @@ function FolderOptions() {
         "
     >
       <div
-        className="absolute top-[50%] left-0 translate-y-[-50%] z-[10] bg-primary p-2 rounded-full"
+        className="absolute top-[50%] left-0 translate-y-[-50%] z-[10] bg-secondary p-2 rounded-full  hover:bg-neutral transition-all duration-300"
         onClick={scrollBack}
       >
         <IconButton
-          className="aspect-square w-8"
+          className="aspect-square min-w-6"
           needTooltip={false}
           tooltipPlaceholder={"back"}
           onClick={() => {}}
         >
-          <IoChevronBackCircle className="" title="back" />
+          <IoChevronBackCircle className=" text-[1.25rem]" title="back" />
         </IconButton>
       </div>
-      <div className="absolute top-[50%] right-0 translate-y-[-50%] z-[10] bg-primary p-2 rounded-full"
-      onClick={scrollForward}
+      <div
+        className="absolute top-[50%] right-0 translate-y-[-50%] z-[10] bg-secondary p-2 rounded-full hover:bg-neutral transition-all duration-300"
+        onClick={scrollForward}
       >
         <IconButton
-          className="aspect-square w-8"
+          className="aspect-square min-w-6"
           needTooltip={false}
           tooltipPlaceholder={"forward"}
           onClick={() => {}}
         >
-          <IoChevronForwardCircle className="" title="forward" />
+          <IoChevronForwardCircle className="text-[1.25rem]" title="forward" />
         </IconButton>
       </div>
       <div

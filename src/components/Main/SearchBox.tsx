@@ -4,7 +4,7 @@ import IconButton from "../UI/Buttons/IconButton";
 function SearchBox() {
   return (
     <div
-      className="flex w-[100%] justify-between  bg-input border-[2px] border-primary rounded-[2rem] p-1
+      className="flex w-[100%] justify-between bg-secondary rounded-[2rem] p-1
     sm: 
     md:w-[75%]
     lg:w-[65%]
@@ -13,7 +13,7 @@ function SearchBox() {
     >
       <input
         type="text"
-        className="w-full bg-input rounded-[inherit] outline-none px-3"
+        className="w-full bg-transparent rounded-[inherit] outline-none px-3"
         placeholder="Search here...."
       />
       <IconButton

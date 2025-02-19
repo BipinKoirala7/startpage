@@ -1,26 +1,62 @@
-import {  Dispatch, ReactNode, SetStateAction, useState } from "react";
+import { ReactNode, useState } from "react";
+import { v4 as uuid } from "uuid";
 
-import  ModalContext  from "./ModalContext";
+import { FaCircleInfo } from "react-icons/fa6";
+import ModalContext from "./ModalContext";
+import { informativeClass } from "../util/util";
 
-type ModalContent = ReactNode | null;
+export type ModalContent = {
+  icon: JSX.Element;
+  content: ReactNode;
+  type: "sucess" | "fail" | "informative" | "none";
+  modalId: string;
+};
+
+export type modalContentArr = Array<ModalContent>;
 export interface ModalContextProps {
-  modalContent: ModalContent;
-  setModalContent: Dispatch<SetStateAction<ModalContent>>;
+  modalContent: ModalContent[];
+  addModalContent: (modalInfo: ModalContent) => void;
+  removeModalContent: (modalId: string) => void;
 }
 
-export default function ModalContextProvider({ children }: { children: React.ReactNode }) {
-  const [modalContent, setModalContent] = useState<ModalContent>(
-      <p>this is a message from the modal context provider</p>
-    );
+export default function ModalContextProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [modalContent, setModalContent] = useState<modalContentArr>([
+    {
+      icon: <FaCircleInfo className={`${informativeClass}`} />,
+      content: (
+        <p>
+          this is the context moda element's 
+        </p>
+      ),
+      type: "informative",
+      modalId: uuid(),
+    },
+  ]);
 
-    const contextValue: ModalContextProps = {
-      modalContent,
-      setModalContent,
-    };
+  function addModalContent(modalInfo: ModalContent) {
+    setModalContent((prev) => prev.concat(modalInfo));
+  }
+
+  function removeModalContent(modalId: string) {
+    setModalContent((prev) =>
+      prev.filter((modal) => {
+        return modal.modalId !== modalId;
+      })
+    );
+  }
+  const contextValue: ModalContextProps = {
+    modalContent,
+    addModalContent,
+    removeModalContent
+  };
 
   return (
-      <ModalContext.Provider value={contextValue}>
-          {children}
-      </ModalContext.Provider>
+    <ModalContext.Provider value={contextValue}>
+      {children}
+    </ModalContext.Provider>
   );
 }

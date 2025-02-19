@@ -1,9 +1,13 @@
 :root {
-  --background: #191a22;
-  --primary: #21232d;
-  --button: #c94343ff;
-  --input: #16171e;
-  --hover: #ffebcd;
+    --background: #191919;
+    --primary: #202020;
+    --secondary: #252422;
+    --tertiary: #C6A5F1;
+    --neutral: #403D39;
+    --accent1: #ffebcd;
+    --accent2: #C94343;
+    --accent3: #EB5E28;
+    --text: #FFFCF2;
 }
 
 ::-webkit-scrollbar{
@@ -42,19 +46,19 @@ dialog::backdrop {
   transition: ease 0.5s;
   position: absolute;
   left: 125%;
-  border: 1px solid var(--input);
-  background-color: var(--primary);
+  /* border: 1px solid var(--neutral); */
+  background-color: var(--secondary);
   border-radius: .5rem;
   z-index: 50;
 }
 
 #progress-bar{
   position: absolute;
-  width: 1%;
-  height: 3px;
-  background-color: green;
+  width: 0%;
+  height: 2.5px;
   bottom: 0;
   left: 0;
+  z-index: 0;
   transition: linear .25s;
 }
 
@@ -67,24 +71,23 @@ dialog::backdrop {
   }
 }
 
-/* #modal-wrapper{
-  animation: modalAnimateIn ease .5s forwards;
-} */
-
 .modalAnimationIn{
-  animation: modalAnimateIn ease .5s forwards;
+  animation: modalAnimateIn linear .5s forwards;
 }
 
 .modalAnimationOut{
-  animation: modalAnimateOut ease .5s forwards;
+  animation: modalAnimateOut linear .5s forwards;
 }
 
 @keyframes modalAnimateIn {
     0%{
       right: -110%;
     }
+    99%{
+      /* transform: translateX(-10%); */
+    }
     100%{
-      right:2.5%;
+      right: 2.5%;
     }
 }
 

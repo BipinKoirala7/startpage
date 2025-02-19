@@ -9,7 +9,7 @@ function LinkContainer() {
     <div className="w-full flex flex-col gap-2 items-center">
       <IconButton
         onClick={() => urlLinkClick("https://mail.google.com/mail/u/1/#inbox")}
-        className="bg-primary  p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
+        className="bg-secondary  p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
         needTooltip={true}
         tooltipPlaceholder="Gmail"
       >
@@ -21,7 +21,7 @@ function LinkContainer() {
       </IconButton>
       <IconButton
         onClick={() => urlLinkClick}
-        className="bg-primary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
+        className="bg-secondary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
         needTooltip={true}
         tooltipPlaceholder="Youtube"
       >
@@ -33,7 +33,7 @@ function LinkContainer() {
       </IconButton>
       <IconButton
         onClick={() => urlLinkClick}
-        className="bg-primary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
+        className="bg-secondary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
         needTooltip={true}
         tooltipPlaceholder="Instagram"
       >
@@ -45,7 +45,7 @@ function LinkContainer() {
       </IconButton>
       <IconButton
         onClick={() => urlLinkClick}
-        className="bg-primary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
+        className="bg-secondary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
         needTooltip={true}
         tooltipPlaceholder="Apple"
       >

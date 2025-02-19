@@ -67,3 +67,5 @@ export function useModalContext(){
   }
   return context;
 }
+
+export const informativeClass = "fill-blue-500 aspect-square min-w-8 min-h-8"
