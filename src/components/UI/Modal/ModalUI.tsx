@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { ModalContent } from "../../../Context/ModalContextProvider";
+import { ModalContent } from "../../../Context/ModalContext/ModalContextProvider";
 import { IoCloseOutline } from "react-icons/io5";
 import IconButton from "../Buttons/IconButton";
 import { useModalContext } from "../../../util/util";

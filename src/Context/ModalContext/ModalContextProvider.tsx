@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 
 import { FaCircleInfo } from "react-icons/fa6";
 import ModalContext from "./ModalContext";
-import { informativeClass } from "../util/util";
+import { informativeClass } from "../../util/util";
 
 export type ModalContent = {
   icon: JSX.Element;

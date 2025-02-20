@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-import { ModalContextProps } from "../../../Context/ModalContextProvider";
+import { ModalContextProps } from "../../../Context/ModalContext/ModalContextProvider";
 import { useModalContext } from "../../../util/util";
 import ModalUI from "./ModalUI";
 

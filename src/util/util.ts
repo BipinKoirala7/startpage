@@ -1,7 +1,7 @@
 // import Link from "../class/link";
 
 import { useContext } from "react"
-import ModalContext from '../Context/ModalContext';
+import ModalContext from '../Context/ModalContext/ModalContext';
 import { ModalContextProps } from "../Context/ModalContextProvider";
 
 export async function createNewLink() {
