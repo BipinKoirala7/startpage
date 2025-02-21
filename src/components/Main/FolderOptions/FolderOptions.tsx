@@ -1,28 +1,12 @@
-import { create } from "zustand";
-import { folderT } from "../types";
+import "../../../App.css";
 
-type state = {
-  selectedFolder: folderT ;
-  folders: Array<folderT>;
-};
+import { type folderT } from "../../../types";
+import FolderUI from "../../UI/FolderUI";
+import ScrollForwardBtn from "./ScrollForwardBtn";
+import ScrollBackBtn from "./ScrollBackBtn";
 
-type action = {
-  setSelectedFolder: (id: string) => void;
-  addFolder: (folder: folderT) => void;
-  removeFolder: (folder: string) => void;
-};
-
-const useFolderStore = create<state & action>((set, get) => ({
-  selectedFolder: {
-    folder_id: "",
-    folder_name: "Select Anyone",
-    folder_description: "",
-    folder_icon_url: "",
-    folder_background_color: "",
-    created_At: new Date(),
-    updated_At: null,
-  },
-  folders: [
+function FolderOptions() {
+  const FolderOptions: folderT[] = [
     {
       folder_id: "1",
       folder_name: "ICP",
@@ -104,18 +88,42 @@ const useFolderStore = create<state & action>((set, get) => ({
       created_At: new Date("2023-09-01T17:57:00.000Z"),
       updated_At: null,
     },
-  ],
-  setSelectedFolder: (id: string) => {
-    const folders = get().folders;
-    const folder = folders.find((f) => f.folder_id === id);
-    set({ selectedFolder: folder });
-  },
-  addFolder: (folder: folderT) =>
-    set((state) => ({ folders: [...state.folders, folder] })),
-  removeFolder: (folder_id: string) =>
-    set((state) => ({
-      folders: state.folders.filter((f) => f.folder_id !== folder_id),
-    })),
-}));
+  ];
 
-export default useFolderStore;
+  return (
+    <div
+      className="relative flex gap-4 overflow-x-auto max-w-full px-12
+        sm:
+        md:
+        lg:
+        xl:
+        "
+    >
+      <ScrollBackBtn />
+      <div
+        id="folderOptions-container"
+        className=" flex gap-4 overflow-x-auto max-w-full p-2
+        sm:
+        md:
+        lg:
+        xl:
+        "
+      >
+        {FolderOptions.map((item) => {
+          const { folder_id } = item;
+          const className = ``;
+          return (
+            <FolderUI
+            key={folder_id}
+            className={className}
+            folder_info={item}
+            />
+          );
+        })}
+      </div>
+        <ScrollForwardBtn />
+    </div>
+  );
+}
+
+export default FolderOptions;

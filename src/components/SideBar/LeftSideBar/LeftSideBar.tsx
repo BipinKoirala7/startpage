@@ -8,7 +8,7 @@ function LeftSideBar() {
   return (
     <div
       id="left-container"
-      className="w-full hidden flex-col justify-between items-center py-8
+      className="w-full hidden flex-col justify-between items-center py-8 bg-surface
       sm:
       md:flex
       lg:

@@ -1,7 +1,7 @@
 import "../../App.css";
 
 import DateAndTime from "./Date&Time";
-import FolderOptions from "./FolderOptions";
+import FolderOptions from "./FolderOptions/FolderOptions";
 import LinkOptions from "./LinkOptions";
 import SearchBox from "./SearchBox";
 

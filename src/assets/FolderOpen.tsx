@@ -1,8 +1,7 @@
 import type { svgPropT } from "../types";
 
 function FolderOpen(props: svgPropT) {
-  const { fill, stroke, className } = props;
-  console.log(stroke)
+  const { fill, className } = props;
   return (
     <svg
       viewBox="0 0 24 24"

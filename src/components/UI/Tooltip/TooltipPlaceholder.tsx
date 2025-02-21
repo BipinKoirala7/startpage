@@ -4,7 +4,7 @@ type propsT = {
 
 function TooltipPlaceholder(props: propsT) {
   const { name } = props;
-  return <p className="">{name}</p>;
+  return <p className="text-white">{name}</p>;
 }
 
 export default TooltipPlaceholder;
