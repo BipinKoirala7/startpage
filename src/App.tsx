@@ -7,7 +7,7 @@ function App() {
   return (
     <main
       id="main-wrapper"
-      className="text-[#AFA3A3] bg-background w-full h-full max-w-screen max-h-screen justify-center p-2"
+      className="text-[#AFA3A3] bg-background w-full h-full max-w-screen max-h-screen justify-center p-2 flex "
     >
       <LeftSideBar />
       <CenterMain />

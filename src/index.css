@@ -29,12 +29,3 @@ body{
     height: 100dvh;
     width:100dvw;
 }
-
-::-webkit-scrollbar{
-  background-color: transparent;
-  width: .25rem;
-}
-
-::-webkit-scrollbar-thumb{
-  background-color: var(--primary);
-}

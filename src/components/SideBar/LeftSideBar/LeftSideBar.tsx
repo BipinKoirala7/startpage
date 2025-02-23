@@ -8,14 +8,14 @@ function LeftSideBar() {
   return (
     <div
       id="left-container"
-      className="w-full hidden flex-col justify-between items-center py-8 bg-surface
+      className="w-full hidden flex-col justify-between items-center py-2 
       sm:
       md:flex
       lg:
       "
     >
       <CreateLinkContainer />
-     <LinkContainer />
+      <LinkContainer />
       <SettingsButton />
     </div>
   );

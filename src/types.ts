@@ -10,8 +10,8 @@ export type folderT = {
   folder_description: string;
   folder_icon_url: string | null;
   folder_background_color: string | undefined;
-  created_At: Date;
-  updated_At: Date | null;
+  created_At: string;
+  updated_At: string | null;
 };
 
 export type linkT = {
@@ -21,5 +21,5 @@ export type linkT = {
   link_icon_url: string | null;
   link_background_color: string | null;
   link_url: string;
-  created_At: Date;
+  created_At: string;
 };

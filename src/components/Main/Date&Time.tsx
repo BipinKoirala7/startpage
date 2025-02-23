@@ -19,7 +19,7 @@ function DateAndTime() {
         timedateObj.toLocaleTimeString("en-GB", {
           hour: "2-digit",
           minute: "2-digit",
-          second:"2-digit"
+          second: "2-digit",
         })
       );
     }, 1000);
@@ -102,20 +102,22 @@ function DateAndTime() {
     return fullString;
   }
   return (
-    <div className="grid grid-rows-[1fr_auto]  rounded-[.25rem] overflow-hidden  w-fit items-center justify-center">
+    <div className="flex flex-col gap-2  rounded-[.25rem] overflow-hidden items-center justify-center  w-full h-full">
       <div
-        className="grid grid-cols-2  justify-between
-      text-[2rem]
-      sm:text-[2rem]
-      lg:text-[3rem]
+        className="grid grid-cols-2 gap-4  place-items-center w-full h-fit
+        text-[2rem] 
+        sm:text-[2rem]
+        lg:text-[3rem]
       "
       >
-        <p className="flex items-center justify-center ">{time}</p>
-        <p className="flex items-center justify-center">{today_day}</p>
+        <p className="flex w-full justify-end items-center">{time}</p>
+        <p className="flex w-full justify-start items-centerr">{today_day}</p>
       </div>
-      <div className="grid grid-cols-2  w-full justify-center items-center">
-        <p className="flex items-center justify-center">2081 Mangsir 16th</p>
-        <p className="flex items-center justify-center">{today_date}</p>
+      <div className="grid grid-cols-2 gap-8 w-full     justify-center items-center h-fit">
+        <p className="flex w-full justify-end items-center">
+          2081 Mangsir 16th
+        </p>
+        <p className="flex w-full justify-start items-center">{today_date}</p>
       </div>
     </div>
   );

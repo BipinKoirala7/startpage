@@ -45,7 +45,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_id: "3",
       folder_name: "Social Media",
       folder_description: "Description for Social Media",
-      folder_icon_url: "https://s2.svgbox.net/flags-hd.svg?ic=np",
+      folder_icon_url: "https://s2.svgbox.net/files.svg?ic=vscode",
       folder_background_color: "default",
       created_At: new Date("2023-03-01T17:57:00.000Z"),
       updated_At: null,
