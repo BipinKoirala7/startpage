@@ -8,6 +8,7 @@ import useFolderStore from "../../../store/folderStore";
 
 function FolderOptions() {
   const folders: Array<folderT> = useFolderStore((state) => state.folders);
+  const selectFolder = useFolderStore((state) => state.setSelectedFolder);
   return (
     <div
       className="relative flex gap-4 overflow-x-auto max-w-full px-2 py-1 rounded-sm items-center
@@ -35,6 +36,10 @@ function FolderOptions() {
               key={folder_id}
               className={className}
               folder_info={item}
+              onClick={() => {
+                console.log(folder_id);
+                selectFolder(folder_id)
+              }}
             />
           );
         })}

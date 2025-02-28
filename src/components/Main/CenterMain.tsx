@@ -2,7 +2,7 @@ import "../../App.css";
 
 import DateAndTime from "./Date&Time";
 import FolderOptions from "./FolderOptions/FolderOptions";
-import LinkOptions from "./LinkOptions";
+import Links from "./Links/Links";
 import SearchBox from "./SearchBox";
 
 function CenterMain() {
@@ -17,7 +17,7 @@ function CenterMain() {
     >
       <DateAndTime />
       <SearchBox />
-      <LinkOptions />
+      <Links />
       <FolderOptions />
     </div>
   );

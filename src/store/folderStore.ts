@@ -19,9 +19,9 @@ const useFolderStore = create<state & action>((set, get) => ({
     folder_description: "",
     folder_icon_url: "",
     folder_background_color: "",
-    created_At: new Date(),
+    created_At:"",
     updated_At: null,
-  },
+ },
   folders: [
     {
       folder_id: "1",
@@ -29,7 +29,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for ICP",
       folder_icon_url: "",
       folder_background_color: "default",
-      created_At: new Date("2023-01-01T17:57:00.000Z"),
+      created_At:"2023-01-01T17:57:00.000Z",
       updated_At: null,
     },
     {
@@ -38,7 +38,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for Football",
       folder_icon_url: "",
       folder_background_color: "default",
-      created_At: new Date("2023-02-01T17:57:00.000Z"),
+      created_At:"2023-02-01T17:57:00.000Z",
       updated_At: null,
     },
     {
@@ -47,7 +47,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for Social Media",
       folder_icon_url: "https://s2.svgbox.net/files.svg?ic=vscode",
       folder_background_color: "default",
-      created_At: new Date("2023-03-01T17:57:00.000Z"),
+      created_At:"2023-03-01T17:57:00.000Z",
       updated_At: null,
     },
     {
@@ -56,7 +56,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for Programming",
       folder_icon_url: "",
       folder_background_color: "default",
-      created_At: new Date("2023-04-01T17:57:00.000Z"),
+      created_At:"2023-04-01T17:57:00.000Z",
       updated_At: null,
     },
     {
@@ -65,7 +65,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for Basketball",
       folder_icon_url: "",
       folder_background_color: "default",
-      created_At: new Date("2023-05-01T17:57:00.000Z"),
+      created_At:"2023-05-01T17:57:00.000Z",
       updated_At: null,
     },
     {
@@ -74,7 +74,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for Dating",
       folder_icon_url: "",
       folder_background_color: "default",
-      created_At: new Date("2023-06-01T17:57:00.000Z"),
+      created_At:"2023-06-01T17:57:00.000Z",
       updated_At: null,
     },
     {
@@ -83,7 +83,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for Facebook",
       folder_icon_url: "",
       folder_background_color: "default",
-      created_At: new Date("2023-07-01T17:57:00.000Z"),
+      created_At:"2023-07-01T17:57:00.000Z",
       updated_At: null,
     },
     {
@@ -92,7 +92,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for Youtube",
       folder_icon_url: "",
       folder_background_color: "default",
-      created_At: new Date("2023-08-01T17:57:00.000Z"),
+      created_At:"2023-08-01T17:57:00.000Z",
       updated_At: null,
     },
     {
@@ -101,7 +101,7 @@ const useFolderStore = create<state & action>((set, get) => ({
       folder_description: "Description for Web Dev",
       folder_icon_url: "",
       folder_background_color: "default",
-      created_At: new Date("2023-09-01T17:57:00.000Z"),
+      created_At:"2023-09-01T17:57:00.000Z",
       updated_At: null,
     },
   ],

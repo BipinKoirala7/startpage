@@ -3,19 +3,20 @@ import { create } from "zustand";
 import { linkT } from "../types";
 
 type state = {
-    links: Array<linkT>;
+  links: Array<linkT>;
 };
+
 type action = {
-    fetchLinks:(folder_id:string) => void;
-    addLink: (link: linkT) => void;
-    removeLink: (link_id: string) => void;
+  fetchLinks: (folder_id: string) => void;
+  addLink: (link: linkT) => void;
+  removeLink: (link_id: string) => void;
 };
 
 const useLinkStore = create<state & action>((set) => ({
   links: [
     {
       link_id: "001",
-      folder_id: "100001",
+      folder_id: "1",
       link_name: "Facebook",
       link_icon_url: "https://facebook.com/favicon.ico",
       link_background_color: "#1877F2",
@@ -24,7 +25,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "002",
-      folder_id: "100002",
+      folder_id: "1",
       link_name: "Google Drive",
       link_icon_url: "https://drive.google.com/favicon.ico",
       link_background_color: "#FFC107",
@@ -33,7 +34,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "003",
-      folder_id: "100003",
+      folder_id: "1",
       link_name: "Netflix",
       link_icon_url: "https://netflix.com/favicon.ico",
       link_background_color: "#E50914",
@@ -42,7 +43,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "004",
-      folder_id: "100004",
+      folder_id: "1",
       link_name: "Coursera",
       link_icon_url: "https://coursera.org/favicon.ico",
       link_background_color: "#2A73CC",
@@ -51,7 +52,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "005",
-      folder_id: "100005",
+      folder_id: "1",
       link_name: "Amazon",
       link_icon_url: "https://amazon.com/favicon.ico",
       link_background_color: "#FF9900",
@@ -60,7 +61,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "006",
-      folder_id: "100006",
+      folder_id: "2",
       link_name: "LinkedIn",
       link_icon_url: "https://linkedin.com/favicon.ico",
       link_background_color: "#0A66C2",
@@ -69,7 +70,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "007",
-      folder_id: "100007",
+      folder_id: "2",
       link_name: "GitHub",
       link_icon_url: "https://github.com/favicon.ico",
       link_background_color: "#181717",
@@ -78,7 +79,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "008",
-      folder_id: "100008",
+      folder_id: "2",
       link_name: "BBC News",
       link_icon_url: "https://bbc.com/favicon.ico",
       link_background_color: "#BB1919",
@@ -87,7 +88,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "009",
-      folder_id: "100009",
+      folder_id: "3",
       link_name: "Spotify",
       link_icon_url: "https://spotify.com/favicon.ico",
       link_background_color: "#1DB954",
@@ -96,7 +97,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "010",
-      folder_id: "100010",
+      folder_id: "4",
       link_name: "Dropbox",
       link_icon_url: "https://dropbox.com/favicon.ico",
       link_background_color: "#0061FF",
@@ -105,7 +106,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "011",
-      folder_id: "100011",
+      folder_id: "4",
       link_name: "Slack",
       link_icon_url: "https://slack.com/favicon.ico",
       link_background_color: "#4A154B",
@@ -114,7 +115,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "012",
-      folder_id: "100012",
+      folder_id: "4",
       link_name: "Figma",
       link_icon_url: "https://figma.com/favicon.ico",
       link_background_color: "#F24E1E",
@@ -123,7 +124,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "013",
-      folder_id: "100013",
+      folder_id: "4",
       link_name: "YouTube",
       link_icon_url: "https://youtube.com/favicon.ico",
       link_background_color: "#FF0000",
@@ -132,7 +133,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "014",
-      folder_id: "100014",
+      folder_id: "4",
       link_name: "PayPal",
       link_icon_url: "https://paypal.com/favicon.ico",
       link_background_color: "#003087",
@@ -141,7 +142,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "015",
-      folder_id: "100015",
+      folder_id: "4",
       link_name: "Airbnb",
       link_icon_url: "https://airbnb.com/favicon.ico",
       link_background_color: "#FF5A5F",
@@ -150,7 +151,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "016",
-      folder_id: "100016",
+      folder_id: "4",
       link_name: "Instagram",
       link_icon_url: "https://instagram.com/favicon.ico",
       link_background_color: "#E4405F",
@@ -159,7 +160,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "017",
-      folder_id: "100017",
+      folder_id: "4",
       link_name: "Notion",
       link_icon_url: "https://notion.so/favicon.ico",
       link_background_color: "#000000",
@@ -168,7 +169,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "018",
-      folder_id: "100018",
+      folder_id: "4",
       link_name: "Stack Overflow",
       link_icon_url: "https://stackoverflow.com/favicon.ico",
       link_background_color: "#F48024",
@@ -177,7 +178,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "019",
-      folder_id: "100019",
+      folder_id: "4",
       link_name: "Discord",
       link_icon_url: "https://discord.com/favicon.ico",
       link_background_color: "#5865F2",
@@ -186,7 +187,7 @@ const useLinkStore = create<state & action>((set) => ({
     },
     {
       link_id: "020",
-      folder_id: "100020",
+      folder_id: "4",
       link_name: "Microsoft OneDrive",
       link_icon_url: "https://onedrive.live.com/favicon.ico",
       link_background_color: "#0078D4",
