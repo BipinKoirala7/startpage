@@ -9,11 +9,12 @@ type IconButtonProps = {
   needTooltip: boolean;
   children: ReactNode;
   tooltipPlaceholder: string | null;
-  onClick: () => void;
+  onClick?: () => void;
+  tooltipDirection?: "top" | "bottom" | "left" | "right";
 };
 
 function IconButton(props: IconButtonProps) {
-  const { className, needTooltip, children, tooltipPlaceholder, onClick } =
+  const { className, needTooltip, children, tooltipPlaceholder, onClick,tooltipDirection } =
     props;
   const [shouldOpen, setShouldOpen] = useState(false);
   return (
@@ -25,7 +26,7 @@ function IconButton(props: IconButtonProps) {
     >
       {children}
       {needTooltip && (
-        <Tooltip tooltipId={uuid()} placeholder={tooltipPlaceholder} shouldOpen={shouldOpen} />
+        <Tooltip tooltipId={uuid()} placeholder={tooltipPlaceholder} shouldOpen={shouldOpen} direction={tooltipDirection } />
       )}
     </div>
   );

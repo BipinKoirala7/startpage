@@ -31,7 +31,7 @@ export type userT = {
   email: string;
   username: string;
   password: string | null;
-  user_img: Array<string> | null;
+  user_img: string | null;
   created_at: string;
 };
 

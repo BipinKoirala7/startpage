@@ -1,13 +1,16 @@
 import { useMutation } from "@tanstack/react-query";
 import { useState } from "react";
 import {  useNavigate } from "react-router-dom";
+import { useToken } from "../../../hooks/useToken";
+import { apiResponseT, tokenT } from "../../../types";
 
 function SignUp() {
+  const  {setToken}= useToken();
     const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const mutationFn = async () => {
+    const mutationFn = async ():Promise<apiResponseT<tokenT>> => {
         const response = await fetch(
           "http://localhost:5000/api/o2auth/register",
           {
@@ -31,9 +34,11 @@ function SignUp() {
       };
 
     const { mutate, isPending, error ,isError} = useMutation({mutationFn,
-        onSuccess: () => {
-            console.log("Sign up successful")
-            navigate("/signIn");
+      onSuccess: (data) => {
+        if (data.data) {
+          setToken(data.data.token);
+          navigate("/");
+        }
         },
         onError: (error) => {
           console.error("Error signing up:", error)

@@ -1,7 +1,7 @@
 import "./App.css";
 import CenterMain from "./components/Main/CenterMain";
 import LeftSideBar from "./components/SideBar/LeftSideBar/LeftSideBar";
-import RightSideBar from "./components/SideBar/RightSideBar";
+import RightSideBar from "./components/SideBar/RightSideBar/RightSideBar";
 
 function App() {
   return (

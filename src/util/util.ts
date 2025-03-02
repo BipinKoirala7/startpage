@@ -2,7 +2,7 @@
 
 import { useContext } from "react"
 import ModalContext from '../Context/ModalContext/ModalContext';
-import { ModalContextProps } from "../Context/ModalContextProvider";
+import { ModalContextProps } from "../Context/ModalContext/ModalContextProvider";
 
 export async function createNewLink() {
 //  try {
