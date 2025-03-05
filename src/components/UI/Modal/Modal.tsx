@@ -1,47 +1,31 @@
-// import { useEffect, useRef } from "react";
-// import { ModalContextProps } from "../../../Context/ModalContextProvider";
-// import { useModalContext } from "../../../util/util";
-import { createPortal } from "react-dom";
+type modalPropsT = {
+  children: React.ReactNode;
+  direction?: string;
+  shouldOpen?: boolean;
+  className?: string;
+};
 
-import ModalContainer from "./ModalContainer";
-
-function Modal() {
-  // const { modalContent }: ModalContextProps = useModalContext();
-  // const counter = useRef(0);
-  // useEffect(() => {
-  //   if (modalWrapper.current) {
-  //     modalWrapper.current.classList.remove("modalAnimationIn");
-  //     modalWrapper.current.classList.add("modalAnimationIn");
-  //   }
-  //   const progressBar = document.getElementById("progress-bar");
-  //   const interval = setInterval(() => {
-  //     if (counter.current < 100) {
-  //       counter.current++;
-  //       if (progressBar) {
-  //         progressBar.style.width = `${counter.current}%`;
-  //       }
-  //     } else {
-  //       counter.current = 0;
-  //       if (progressBar) {
-  //         progressBar.style.width = `${counter.current}%`;
-  //       }
-  //       if (modalWrapper.current) {
-  //         modalWrapper.current.classList.add("modalAnimationOut");
-  //         setTimeout(() => {
-  //           modalWrapper.current?.classList.remove("modalAnimationOut");
-  //           modalWrapper.current?.classList.remove("modalAnimationIn");
-  //         }, 500);
-  //         clearInterval(interval);
-  //       }
-  //     }
-  //   }, 100);
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [modalContent]);
-  return createPortal(
-    <ModalContainer ></ModalContainer>,
-    document.getElementById("modal") as Element
+function Modal(props: modalPropsT) {
+  const { children, direction,shouldOpen=false, className} = props;
+  return (
+    <>
+      {shouldOpen && (
+        <div
+          className={`${className} absolute z-20 ${
+            direction === "top"
+              ? "top-[-110%] left-1/2 -translate-x-1/2"
+              : direction === "bottom"
+              ? "top-[110%] left-1/2 -translate-x-1/2"
+              : direction === "right"
+              ? "left-[110%]  top-1/2 -translate-y-1/2"
+              : "right-[110%] top-1/2 -translate-y-1/2"
+          } 
+            transition-all duration-200 ease-linear bg-surface border-[2px] border-primary rounded-md p-2`}
+        >
+          {children}
+        </div>
+      )}
+    </>
   );
 }
 

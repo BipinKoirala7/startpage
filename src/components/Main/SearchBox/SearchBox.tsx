@@ -1,5 +1,6 @@
-import Search from "../../assets/Search";
-import IconButton from "../UI/Buttons/IconButton";
+import Search from "../../../assets/Search";
+import IconButton from "../../UI/Buttons/IconButton";
+import SearchEngineOption from "./SearchEngineOption";
 
 function SearchBox() {
   return (
@@ -12,6 +13,7 @@ function SearchBox() {
           xl:w-[55%]
     "
       >
+        <SearchEngineOption />
         <input
           type="text"
           className="w-full bg-transparent rounded-[inherit] outline-none px-3"

@@ -17,7 +17,7 @@ function FolderUI(props: FolderPropT) {
     folder_icon_url,
     folder_background_color,
   } = folder_info;
-  const isSelected = useFolderStore((state) => state.selectedFolder.folder_id === folder_id);
+  const isSelected = useFolderStore((state) => state.selectedFolder?.folder_id === folder_id);
   return (
     <div
       style={{

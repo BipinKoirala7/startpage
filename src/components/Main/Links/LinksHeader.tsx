@@ -2,9 +2,12 @@ import useFolderStore from "../../../store/folderStore";
 import IconButton from "../../UI/Buttons/IconButton";
 
 function LinksHeader() {
-      const { folder_name, folder_icon_url } = useFolderStore(
+      const selectedFolder = useFolderStore(
         (state) => state.selectedFolder
-      );
+  );
+  if (!selectedFolder) return null;
+  
+  const { folder_name, folder_icon_url } = selectedFolder;
   return (
     <div className="flex items-center gap-2">
       {folder_icon_url && (

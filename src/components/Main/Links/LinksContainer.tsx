@@ -4,9 +4,17 @@ import BigButton from "../../UI/Buttons/BigButton";
 
 function LinksContainer() {
   const links = useLinkStore((state) => state.links);
-  const selected_folder_id = useFolderStore(
-    (state) => state.selectedFolder.folder_id
-  );
+  const selected_folder = useFolderStore((state) => state.selectedFolder);
+  if (selected_folder === null)
+    return (
+      <div
+        className=" w-full max-h-full h-full  gap-2 items-center justify-center flex backdrop-filter-[10px]
+    "
+      >
+        <div className="px-4 py-4 border-[1px] border-primary rounded-lg">No folder is selected</div>
+      </div>
+    );
+  const selected_folder_id = selected_folder.folder_id;
   return (
     <div
       className="max-w-full w-full gap-2 items-center justify-center grid grid-cols-[repeat(auto-fill,minmax(30%,1fr))] p-2
@@ -17,7 +25,7 @@ function LinksContainer() {
     "
     >
       {links.map((option, index) => {
-        const { link_name, link_icon_url, folder_id,link_url } = option;
+        const { link_name, link_icon_url, folder_id, link_url } = option;
         if (selected_folder_id === folder_id) {
           return (
             <BigButton
@@ -28,7 +36,9 @@ function LinksContainer() {
                   : "https://s2.svgbox.net/octicons.svg?ic=link"
               }
               key={index}
-              onClick={() => {window.open(link_url, "_blank");}}
+              onClick={() => {
+                window.open(link_url, "_blank");
+              }}
             />
           );
         }

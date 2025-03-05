@@ -6,15 +6,15 @@ import Tooltip from "../Tooltip/Tooltip";
 
 type IconButtonProps = {
   className: string;
-  needTooltip: boolean;
+  needTooltip?: boolean;
   children: ReactNode;
-  tooltipPlaceholder: string | null;
+  tooltipPlaceholder?: string | null;
   onClick?: () => void;
   tooltipDirection?: "top" | "bottom" | "left" | "right";
 };
 
 function IconButton(props: IconButtonProps) {
-  const { className, needTooltip, children, tooltipPlaceholder, onClick,tooltipDirection } =
+  const { className, needTooltip=false, children, tooltipPlaceholder="", onClick,tooltipDirection } =
     props;
   const [shouldOpen, setShouldOpen] = useState(false);
   return (

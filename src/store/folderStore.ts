@@ -2,7 +2,7 @@ import { create } from "zustand";
 import { folderT } from "../types";
 
 type state = {
-  selectedFolder: folderT ;
+  selectedFolder: folderT | null ;
   folders: Array<folderT>;
 };
 
@@ -13,15 +13,7 @@ type action = {
 };
 
 const useFolderStore = create<state & action>((set, get) => ({
-  selectedFolder: {
-    folder_id: "",
-    folder_name: "Select Anyone",
-    folder_description: "",
-    folder_icon_url: "",
-    folder_background_color: "",
-    created_At:"",
-    updated_At: null,
- },
+  selectedFolder: null,
   folders: [
     {
       folder_id: "1",

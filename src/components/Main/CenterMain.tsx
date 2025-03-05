@@ -3,7 +3,7 @@ import "../../App.css";
 import DateAndTime from "./Date&Time";
 import FolderOptions from "./FolderOptions/FolderOptions";
 import Links from "./Links/Links";
-import SearchBox from "./SearchBox";
+import SearchBox from "./SearchBox/SearchBox";
 
 function CenterMain() {
   return (
