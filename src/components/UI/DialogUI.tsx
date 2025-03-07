@@ -22,12 +22,12 @@ function DialogUI(props: DialogPropsT) {
     <dialog
       ref={dialogRef}
       style={{
-        backdropFilter: "blur(15px)",
+        backdropFilter: "blur(5px)",
       }}
       className=" bg-transparent w-full h-full rounded-[1rem] text-white  top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border-none outline-none z-20  items-center justify-center transition-all"
     >
-      <div className=" w-full h-full flex items-center justify-center">
-        <div className="relative w-fit h-fit bg-primary p-10 rounded-[1rem]">
+      <div className=" w-full h-full flex items-center justify-center rounded-[1rem]">
+        <div className="relative w-fit h-fit bg-surface p-10  rounded-[1rem]">
           {children}
         <button
           title="close dialog"
@@ -41,7 +41,7 @@ function DialogUI(props: DialogPropsT) {
             className="  top-0 left-0 p-2 bg-input rounded-[50%] hover:bg-accent2"
             needTooltip={false}
             tooltipPlaceholder={"close"}
-            onClick={() => {}}
+            onClick={() => {dialogRef.current?.close();}}
           >
             <IoIosClose className="text-[1.5rem] text-accent1" />
           </IconButton>

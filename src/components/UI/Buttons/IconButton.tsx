@@ -22,7 +22,7 @@ function IconButton(props: IconButtonProps) {
       onClick={onClick}
       onMouseEnter={() => setShouldOpen(true)}
       onMouseLeave={() => setShouldOpen(false)}
-      className={`${className} transition-all duration-200 ease-linear relative flex justify-center items-center cursor-pointer w-fit`}
+      className={`${className} icon-button transition-all duration-200 ease-linear relative flex justify-center items-center cursor-pointer w-fit`}
     >
       {children}
       {needTooltip && (
