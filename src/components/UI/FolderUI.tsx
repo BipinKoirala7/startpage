@@ -23,8 +23,8 @@ function FolderUI(props: FolderPropT) {
       style={{
         backgroundColor: folder_background_color,
       }}
-      className={`w-full h-fit border-[1px] border-secondary px-4 py-2 rounded-[.25rem]  hover:rounded-[.5rem] flex gap-2 transition-all duration-200 ease-linear relative justify-center items-center cursor-pointer${className} ${
-        isSelected ? "bg-tertiary text-black" : "hover:bg-secondary"
+      className={`transition-element w-full h-fit border-[1px] border-primary px-4 py-2 rounded-[.25rem] flex gap-2  relative justify-center items-center cursor-pointer  ${className} ${
+        isSelected ? "bg-tertiary text-black" : "hover:bg-primary"
       }`}
       onClick={onClick}
     >

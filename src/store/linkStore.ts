@@ -3,14 +3,13 @@ import { create } from "zustand";
 import { apiResponseT, linkT } from "../types";
 
 type state = {
-  links: Array<linkT>;
+  links: Array<linkT>
 };
 
 type action = {
-  fetchLinks: (folder_id: string) => void;
-  loadLinks: (links: Array<linkT>) => void;
-  addLink: (link: linkT) => void;
-  removeLink: (link_id: string) => void;
+  fetchLinks: (folder_id: string) => void,
+  addLink: (link: linkT) => void,
+  removeLink: (link_id: string) => void
 };
 
 const useLinkStore = create<state & action>((set) => ({
@@ -30,7 +29,6 @@ const useLinkStore = create<state & action>((set) => ({
       console.error("Error fetching links:", error);
     }
   },
-  loadLinks: (links: Array<linkT>) => set({ links }),
   addLink: (link: linkT) => set((state) => ({ links: [...state.links, link] })),
   removeLink: (link_id: string) =>
     set((state) => ({

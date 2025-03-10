@@ -8,7 +8,7 @@ type state = {
 
 type action = {
   setSelectedFolder: (id: string) => void;
-  loadFolders:(folders:Array<folderT>) => void;
+  fetchFolders:(folders:Array<folderT>) => void;
   addFolder: (folder: folderT) => void;
   removeFolder: (folder: string) => void;
 };
@@ -21,7 +21,7 @@ const useFolderStore = create<state & action>((set, get) => ({
     const folder = folders.find((f) => f.folder_id === id);
     set({ selectedFolder: folder });
   },
-  loadFolders: (folders: Array<folderT>) => set({ folders }),
+  fetchFolders:  (folders: Array<folderT>) => set({folders}),
   addFolder: (folder: folderT) =>
     set((state) => ({ folders: [...state.folders, folder] })),
   removeFolder: (folder_id: string) =>

@@ -5,7 +5,7 @@ import { HiArrowSmLeft } from "react-icons/hi";
 function ScrollBackBtn() {
   return (
     <div
-      className="absolute hidden top-[50%] left-[.5rem] translate-y-[-50%] z-[10] bg-secondary p-2 rounded-full  hover:bg-neutral transition-all duration-300
+      className=" hidden  z-[10] bg-secondary p-2 rounded-full  hover:bg-neutral transition-all duration-300
         sm:
         md:inline-block
         lg:

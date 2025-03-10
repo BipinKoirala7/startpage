@@ -21,9 +21,9 @@ function Tooltip({
           id={tooltipId}
           className={`absolute z-20 ${
             direction === "top"
-              ? "top-[-110%] left-1/2 -translate-x-1/2"
+              ? "top-[-125%] left-1/2 -translate-x-1/2"
               : direction === "bottom"
-              ? "bottom-[-110%] left-1/2 -translate-x-1/2"
+              ? "bottom-[-125%] left-1/2 -translate-x-1/2"
               : direction === "right"
               ? "left-[110%]  top-1/2 -translate-y-1/2"
               : "right-[110%] top-1/2 -translate-y-1/2"
@@ -39,7 +39,7 @@ function Tooltip({
                 direction === "top"
                   ? "top-[100%] -translate-y-[50%] left-1/2 -translate-x-1/2 rotate-[-90deg]"
                   : direction === "bottom"
-                  ? "bottom-[75%] left-1/2 -translate-x-1/2 rotate-90"
+                  ? "bottom-[70%] left-1/2 -translate-x-1/2 rotate-90"
                   : direction === "left"
                   ? "top-[50%] translate-y-[-50%] left-[100%] translate-x-[-50%] rotate-180"
                   : "top-[50%] translate-y-[-50%] left-[0%] translate-x-[-50%] rotate-0"

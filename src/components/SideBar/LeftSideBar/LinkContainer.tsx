@@ -20,7 +20,7 @@ function LinkContainer() {
         />
       </IconButton>
       <IconButton
-        onClick={() => urlLinkClick}
+        onClick={() => urlLinkClick("https://youtube.com")}
         className="bg-primary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
         needTooltip={true}
         tooltipPlaceholder="Youtube"
@@ -32,7 +32,7 @@ function LinkContainer() {
         />
       </IconButton>
       <IconButton
-        onClick={() => urlLinkClick}
+        onClick={() => urlLinkClick("https://instagram.com/direct/inbox")}
         className="bg-primary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
         needTooltip={true}
         tooltipPlaceholder="Instagram"
@@ -44,7 +44,7 @@ function LinkContainer() {
         />
       </IconButton>
       <IconButton
-        onClick={() => urlLinkClick}
+        onClick={() => urlLinkClick("https://apple.com")}
         className="bg-primary p-4 rounded-[50%] hover:rounded-[20%] hover:bg-accent1"
         needTooltip={true}
         tooltipPlaceholder="Apple"

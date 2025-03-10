@@ -3,6 +3,8 @@ import TodoList from "./TodoList";
 import Notes from "./Notes";
 import User from "./User";
 import Timer from "./Timer";
+import WeatherBox from "./WeatherBox";
+import DateAndTime from "./DateAndTime";
 
 function RightSideBar() {
   const user = useUser();
@@ -24,8 +26,8 @@ function RightSideBar() {
         xl:"
       >
         <div className="flex flex-col gap-2">
-          <div className="bg-primary p-2">Weather Box</div>
-          <div className="bg-primary p-2">Date and Time Box</div>
+          <WeatherBox />
+          <DateAndTime />
         </div>
         <div className="flex flex-col gap-2">
           <TodoList />

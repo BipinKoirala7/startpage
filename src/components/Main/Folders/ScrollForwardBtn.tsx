@@ -5,7 +5,7 @@ import { scrollForward } from "../../../util/util";
 function ScrollForwardBtn() {
   return (
     <div
-      className="absolute hidden top-[50%] right-[.5rem] translate-y-[-50%] z-[10] bg-secondary p-2 rounded-full hover:bg-neutral transition-all duration-300 
+      className=" hidden z-[10] bg-secondary p-2 rounded-full hover:bg-neutral transition-all duration-300 
         sm:
         md:inline-block
         lg:
