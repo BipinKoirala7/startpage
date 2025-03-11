@@ -33,7 +33,6 @@ function FolderOptions() {
                   className={className}
                   folder_info={item}
                   onClick={() => {
-                    console.log(folder_id);
                     selectFolder(folder_id);
                   }}
                 />

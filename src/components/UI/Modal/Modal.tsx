@@ -11,7 +11,7 @@ function Modal(props: modalPropsT) {
     <>
       {shouldOpen && (
         <div
-          className={`${className} absolute z-20 ${
+          className={`${className} absolute z-30 ${
             direction === "top"
               ? "top-[-110%] left-1/2 -translate-x-1/2"
               : direction === "bottom"

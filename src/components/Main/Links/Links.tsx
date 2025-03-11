@@ -4,18 +4,22 @@ import LinksHeader from "./LinksHeader";
 import LinksOptions from "./LinksOptions";
 import LinksContainer from "./LinksContainer";
 import useFolderStore from "../../../store/folderStore";
-import useLinkStore from "../../../store/linkStore";
-import { useEffect } from "react";
 
 function Links() {
-  const selectedFolder = useFolderStore((state) => state.selectedFolder);
-  console.log(selectedFolder?.folder_name);
-  const fetchLinks = useLinkStore((state) => state.fetchLinks);
+  const selected_folder = useFolderStore((state) => state.selectedFolder);
 
-  useEffect(() => {
-    console.log("useeffect ran");
-    if (selectedFolder?.folder_id) fetchLinks(selectedFolder.folder_id);
-  }, [fetchLinks, selectedFolder]);
+  if (selected_folder === null) {
+    return (
+      <div
+        className=" w-full max-h-full h-full  gap-2 items-center justify-center flex backdrop-filter-[10px] bg-surface rounded-md
+    "
+      >
+        <div className="px-4 py-4 border-[1px] border-primary rounded-lg">
+          No folder is selected
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-full max-h-full h-full w-full  py-2 px-3 bg-surface overflow-y-auto rounded-md">

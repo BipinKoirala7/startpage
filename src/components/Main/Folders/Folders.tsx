@@ -25,7 +25,6 @@ function Folders() {
   });
 
   useEffect(() => {
-    console.log("folders use Effect ran");
     if (data?.data) {
       fetchFolders(data.data);
     }
@@ -34,7 +33,6 @@ function Folders() {
   useEffect(() => {
     const parentOffsetWidth = parentElementRef.current?.offsetWidth;
     const childrenOffsetWidth = childrenElementRef.current?.offsetWidth;
-    console.log(parentOffsetWidth, childrenOffsetWidth);
     if (parentOffsetWidth && childrenOffsetWidth) {
       if (parentOffsetWidth > childrenOffsetWidth) {
         setShowScrollBtn(true);
@@ -42,7 +40,6 @@ function Folders() {
         setShowScrollBtn(false);
       }
     }
-    console.log(showScrollBtn);
   }, [data, showScrollBtn]);
 
   if (isError)

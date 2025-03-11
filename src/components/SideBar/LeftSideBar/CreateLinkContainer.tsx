@@ -1,7 +1,12 @@
+
+import { v4 as uuidv4 } from "uuid";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
+
 import { HiMiniFolderPlus } from "react-icons/hi2";
 import IconButton from "../../UI/Buttons/IconButton";
 import DialogUI from "../../UI/DialogUI";
-import { useState } from "react";
+import { apiResponseT, folderT } from "../../../types";
 
 function CreateLinkContainer() {
   const [name, setName] = useState<string>("");
@@ -9,16 +14,37 @@ function CreateLinkContainer() {
 
   const mutationFn = async () => {
     try {
-      const response = await fetch(`htt`)
-     }
-    catch (error) {
+      const response = await fetch(
+        `${process.env.VITE_BASE_API_URL}/folders`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: uuidv4(),
+            name,
+            link,
+          }),
+        }
+      );
+      const data: apiResponseT<folderT> = await response.json();
+      return data;
+    } catch (error) {
       console.log(error);
     }
-  }
+  };
+
+  const { mutate, isPending, isError, error } = useMutation({
+    mutationFn,
+    onSuccess: () => {},
+    onError: () => {},
+  });
 
   const [isOpenDialogBox, setIsOpenDialogBox] = useState<boolean>(false);
 
   function handleSaveFunction() {
+    mutate();
     handleCloseFunction();
   }
 
@@ -62,8 +88,9 @@ function CreateLinkContainer() {
             onClick={handleSaveFunction}
             className="bg-primary hover:bg-accent1 hover:text-primary transition-all rounded-[.25rem] py-2"
           >
-            Save
+            {isPending ? <>...</> :<>Save</>}
           </button>
+          { isError && <div className="text-red-500">{error.message}</div>}
         </div>
       </DialogUI>
     </>

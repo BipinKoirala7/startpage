@@ -28,15 +28,16 @@ type action = {
 
 const useThemeStore = create<state & action>((set) => ({
   theme: {
-    background_color: "",
-    surface_color: "",
-    primary_color: "",
-    secondary_color: "",
-    neutral_color: "",
-    accent_color1: "",
-    accent_color2: "",
-    accent_color3: "",
-    text_color: "",
+    background_color: "#1c1c1c",
+    surface_color: "#232323",
+    primary_color: "#2f2f2f",
+    secondary_color: "#27272a",
+    tertiary_color: "#C6A5F1",
+    neutral_color: "#666666",
+    accent_color1: "#ffebcd",
+    accent_color2: "#C94343",
+    accent_color3: "#EB5E28",
+    text_color: "#FFFCF2",
   },
   setBackgroundColor: (color: string) =>
     set((state) => ({ theme: { ...state.theme, backgroundColor: color } })),
