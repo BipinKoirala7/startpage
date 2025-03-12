@@ -1,11 +1,12 @@
+import { HiArrowSmLeft } from "react-icons/hi";
+
 import IconButton from "../../UI/Buttons/IconButton";
 import { scrollBack } from "../../../util/util";
-import { HiArrowSmLeft } from "react-icons/hi";
 
 function ScrollBackBtn() {
   return (
     <div
-      className=" hidden  z-[10] bg-secondary p-2 rounded-full  hover:bg-neutral transition-all duration-300
+      className=" hidden z-[10] bg-secondary p-2 rounded-full  hover:bg-neutral transition-all duration-300
         sm:
         md:inline-block
         lg:

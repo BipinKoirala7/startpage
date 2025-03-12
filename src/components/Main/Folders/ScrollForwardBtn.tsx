@@ -1,4 +1,5 @@
-import { IoChevronForwardCircle } from "react-icons/io5";
+import { HiArrowSmLeft } from 'react-icons/hi';
+
 import IconButton from "../../UI/Buttons/IconButton";
 import { scrollForward } from "../../../util/util";
 
@@ -19,7 +20,7 @@ function ScrollForwardBtn() {
         tooltipPlaceholder={"forward"}
         onClick={() => {}}
       >
-        <IoChevronForwardCircle className="text-[1.25rem]" title="forward" />
+        <HiArrowSmLeft className="text-[1.25rem]" title="forward" />
       </IconButton>
     </div>
   );

@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+
 import useFolderStore from "../../../store/folderStore";
 import useLinkStore from "../../../store/linkStore";
-
 import BigButton from "../../UI/Buttons/BigButton";
 import { apiResponseT, linkT } from "../../../types";
-import { useEffect } from "react";
 import SkeletonUI from "../../UI/SkeletonUI";
 
 function LinksContainer() {
@@ -44,25 +44,25 @@ function LinksContainer() {
   if (isError) return <div>{data?.message}</div>
   if (isLoading)
     return (
-      <div className="w-full  flex gap-4 flex-wrap">
-        <SkeletonUI count={8} className="w-full h-full" width={150} height={100} />
+      <div className="w-full flex gap-4 flex-wrap">
+        <SkeletonUI count={8} className="w-full h-full" width={150} height={75} />
       </div>
     )
 
   if (links === null) return null
-    if (links.length === 0) {
-      return (
-        <div className=" w-full max-h-full h-full  gap-2 items-center justify-center flex backdrop-filter-[10px]">
-          <div className="px-4 py-4 border-[1px] border-primary rounded-lg">
-            No links in this folder
-          </div>
+  if (links.length === 0) {
+    return (
+      <div className="w-full max-h-full h-full gap-2 items-center justify-center flex backdrop-filter-[10px]">
+        <div className={`px-4 py-4 border-[1px] border-surface rounded-lg`}>
+          No links in this folder
         </div>
-      );
-  }
+      </div>
+    );
+}
 
   return (
     <div
-      className="max-w-full w-full gap-2 items-center justify-center grid grid-cols-[repeat(auto-fill,minmax(30%,1fr))] p-2 
+      className="max-w-full w-full h-full overflow-y-auto gap-2 items-center justify-center grid grid-cols-[repeat(auto-fill,minmax(30%,1fr))] p-2 
         sm:grid-cols-[repeat(auto-fill,minmax(22.5%,1fr))]
         md:grid-cols-[repeat(auto-fill,minmax(22.5%,1fr))]
         lg:grid-cols-[repeat(auto-fill,minmax(17.5%,1fr))]
@@ -75,6 +75,7 @@ function LinksContainer() {
           <BigButton
             key={link_id}
             name={link_name}
+            link_id={link_id}
             icon_link={
               link_icon_url
                 ? link_icon_url

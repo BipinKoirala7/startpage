@@ -12,12 +12,12 @@ function FolderOptions() {
   );
   const selectFolder = useFolderStore((state) => state.setSelectedFolder);
   return (
-<>
+    <>
       {folders !== null && folders.length > 0 ? (
         <>
           <div
             id="folderOptions-container"
-            className=" flex gap-4 overflow-x-auto max-w-full py-2 
+            className="flex gap-4 overflow-x-auto max-w-full py-2 
             sm:
             md:
             lg:
@@ -26,11 +26,10 @@ function FolderOptions() {
           >
             {folders.map((item) => {
               const { folder_id } = item;
-              const className = ``;
               return (
                 <FolderUI
                   key={folder_id}
-                  className={className}
+                  className=""
                   folder_info={item}
                   onClick={() => {
                     selectFolder(folder_id);
@@ -44,7 +43,7 @@ function FolderOptions() {
         <div className="w-full h-full flex items-center justify-center gap-4">
           No folders!{" "}
           {
-            <IconButton className="gap-2 hover:bg-primary p-2 rounded-md">
+            <IconButton className={`gap-2 hover:bg-primary p-2 rounded-md`}>
               <FiFolderPlus className="text-[1.5rem] aspect-sqaure" />{" "}
               <p>Create One</p>
             </IconButton>

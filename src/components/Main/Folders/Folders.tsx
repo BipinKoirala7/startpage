@@ -1,10 +1,11 @@
+import { useQuery } from "@tanstack/react-query";
+import { useEffect, useRef, useState } from "react";
+
 import ScrollBackBtn from "./ScrollBackBtn";
 import FolderOptions from "./FolderOptions";
 import ScrollForwardBtn from "./ScrollForwardBtn";
-import { useQuery } from "@tanstack/react-query";
 import { apiResponseT, folderT } from "../../../types";
 import useFolderStore from "../../../store/folderStore";
-import { useEffect, useRef, useState } from "react";
 import SkeletonUI from "../../UI/SkeletonUI";
 
 function Folders() {
@@ -44,7 +45,7 @@ function Folders() {
 
   if (isError)
     return (
-      <div className="w-full h-full flex items-center justify-center gap-4 bg-surface">
+      <div className={`w-full h-full flex items-center justify-center gap-4 bg-surface`}>
         Error occured
       </div>
     );
@@ -60,7 +61,7 @@ function Folders() {
       ) : (
         <div
           ref={childrenElementRef}
-          className=" flex gap-4 overflow-x-auto max-w-full px- py-1 rounded-md items-center justify-between w-full
+          className=" flex gap-4 overflow-x-auto max-w-full px-1 py-1 rounded-md items-center justify-between w-full
           sm:
           md:
           lg:

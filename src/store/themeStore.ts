@@ -6,6 +6,7 @@ type state = {
     surface_color: string;
     primary_color: string;
     secondary_color: string;
+    tertiary_color:string;
     neutral_color: string;
     accent_color1: string;
     accent_color2: string;

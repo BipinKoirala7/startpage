@@ -21,9 +21,9 @@ function Tooltip({
           id={tooltipId}
           className={`absolute z-20 ${
             direction === "top"
-              ? "top-[-125%] left-1/2 -translate-x-1/2"
+              ? "-top-[100%] left-1/2 -translate-x-1/2 -translate-y-1/2"
               : direction === "bottom"
-              ? "bottom-[-125%] left-1/2 -translate-x-1/2"
+              ? "-bottom-[100%] left-1/2 -translate-x-1/2 translate-y-1/2"
               : direction === "right"
               ? "left-[110%]  top-1/2 -translate-y-1/2"
               : "right-[110%] top-1/2 -translate-y-1/2"
@@ -33,9 +33,9 @@ function Tooltip({
             shouldOpen ? "visible opacity-100" : "invisible opacity-0"
           }`}
         >
-          <div className="flex items-center justify-center gap-1 relative  px-2 py-1 bg-primary rounded-[inherit]">
+          <div className="flex items-center justify-center gap-1 relative  px-2 py-1 bg-secondary rounded-[inherit] shadow-lg">
             <BiSolidLeftArrow
-              className={`w-5 h-5 absolute text-primary ${
+              className={`w-5 h-5 absolute text-secondary ${
                 direction === "top"
                   ? "top-[100%] -translate-y-[50%] left-1/2 -translate-x-1/2 rotate-[-90deg]"
                   : direction === "bottom"

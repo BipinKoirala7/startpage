@@ -1,16 +1,22 @@
 import { useState } from "react";
 import IconButton from "./IconButton";
+import useLinkStore from "../../../store/linkStore";
 
 type BigButtonProps = {
+  link_id:string,
   name: string;
   icon_link: string;
   onClick?: () => void;
 };
 
 function BigButton(props: BigButtonProps) {
+  const deleteLinks = useLinkStore(state=> state.removeLink)
+
   const [openContextMenu, setOpenContextMenu] = useState<boolean>(false);
-  const { name, icon_link, onClick } = props;
-  function handleContextMenu(e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) {
+  const { name, icon_link, onClick,link_id } = props;
+  function handleContextMenu(
+    e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
+  ) {
     e.preventDefault();
     setOpenContextMenu((prev) => !prev);
   }
@@ -22,11 +28,11 @@ function BigButton(props: BigButtonProps) {
       {!openContextMenu ? (
         <button
           className={`w-full transition-all duration-200 ease-linear text-ellipsis  aspect-[3/2] rounded-[.75rem] flex gap-2 flex-col  items-center justify-center relative
-      sm:
-      md:
-      lg:hover:bg-primary lg:hover:border-transparent
-      xl:
-      `}
+        sm:
+        md:
+        lg:hover:bg-primary lg:hover:border-transparent
+        xl:
+        `}
           onClick={onClick}
         >
           <img src={icon_link} alt="Image" className="max-w-8 w-8" />
@@ -41,7 +47,14 @@ function BigButton(props: BigButtonProps) {
           <IconButton className="bg-primary w-full rounded-t-[.75rem] rounded-md py-1 hover:text-text hover:bg-neutral">
             Edit
           </IconButton>
-          <IconButton className="bg-primary  w-full rounded-b-[.75rem] rounded-md py-1 hover:bg-accent2 hover:text-text">
+          <IconButton className="bg-primary  w-full rounded-b-[.75rem] rounded-md py-1 hover:bg-accent2 hover:text-text" onClick={()=>{
+            fetch(import.meta.env.VITE_BASE_API_URL + '/links/'+ link_id,{
+              method:'DELETE',
+            }).then(response => response.json()).then(data => {
+              console.log(data)
+              deleteLinks(link_id)
+            })
+          }}>
             Delete
           </IconButton>
         </div>
