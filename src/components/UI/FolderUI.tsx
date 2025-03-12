@@ -24,7 +24,7 @@ function FolderUI(props: FolderPropT) {
         backgroundColor: folder_background_color,
       }}
       className={`transition-element w-full h-fit border-[1px] border-primary px-4 py-2 rounded-[.25rem] flex gap-2  relative justify-center items-center cursor-pointer  ${className} ${
-        isSelected ? "bg-tertiary text-black" : "hover:bg-primary"
+        isSelected ? "bg-tertiary " : "hover:bg-primary"
       }`}
       onClick={onClick}
     >
@@ -35,7 +35,7 @@ function FolderUI(props: FolderPropT) {
           className="max-w-6 w-6 aspect-square"
         />
       ) : isSelected ? (
-        <FolderOpen className="max-w-6 w-6 " fill="black" stroke="white" />
+        <FolderOpen className="max-w-6 w-6 " fill="white" stroke="white" />
       ) : (
         <Folder className="max-w-6 w-6" fill="none" stroke="white" />
       )}

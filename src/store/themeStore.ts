@@ -24,20 +24,34 @@ type action = {
   setAccentColor2: (color: string) => void;
   setAccentColor3: (color: string) => void;
   setTextColor: (color: string) => void;
+  loadDefaultTheme: () => void;
+};
+
+const defaultTheme = {
+  background: "#171717",
+  surface: "#1c1c1c",
+  primary: "#232323",
+  secondary: "#2f2f2f",
+  tertiary: "#27272a",
+  neutral: "#666666",
+  accent1: "#ffebcd",
+  accent2: "#C94343",
+  accent3: "#EB5E28",
+  text: "#FFFCF2",
 };
 
 const useThemeStore = create<state & action>((set) => ({
   theme: {
-    background_color: "#1c1c1c",
-    surface_color: "#232323",
-    primary_color: "#2f2f2f",
-    secondary_color: "#27272a",
-    tertiary_color: "#C6A5F1",
-    neutral_color: "#666666",
-    accent_color1: "#ffebcd",
-    accent_color2: "#C94343",
-    accent_color3: "#EB5E28",
-    text_color: "#FFFCF2",
+    background_color: defaultTheme.background,
+    surface_color: defaultTheme.surface,
+    primary_color: defaultTheme.primary,
+    secondary_color: defaultTheme.secondary,
+    tertiary_color: defaultTheme.tertiary,
+    neutral_color: defaultTheme.neutral,
+    accent_color1: defaultTheme.accent1,
+    accent_color2: defaultTheme.accent2,
+    accent_color3: defaultTheme.accent3,
+    text_color: defaultTheme.text,
   },
   setBackgroundColor: (color: string) =>
     set((state) => ({ theme: { ...state.theme, backgroundColor: color } })),
@@ -57,6 +71,21 @@ const useThemeStore = create<state & action>((set) => ({
     set((state) => ({ theme: { ...state.theme, accentColor3: color } })),
   setTextColor: (color: string) =>
     set((state) => ({ theme: { ...state.theme, textColor: color } })),
+  loadDefaultTheme: () =>
+    set(() => ({
+      theme: {
+        background_color: defaultTheme.background,
+        surface_color: defaultTheme.surface,
+        primary_color: defaultTheme.primary,
+        secondary_color: defaultTheme.secondary,
+        tertiary_color: defaultTheme.tertiary,
+        neutral_color: defaultTheme.neutral,
+        accent_color1: defaultTheme.accent1,
+        accent_color2: defaultTheme.accent2,
+        accent_color3: defaultTheme.accent3,
+        text_color: defaultTheme.text,
+      },
+    })),
 }));
 
 export default useThemeStore;

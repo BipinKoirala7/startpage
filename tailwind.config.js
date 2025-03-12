@@ -4,11 +4,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#1c1c1c",
-        surface:"#232323",
-        primary: "#2f2f2f",
-        secondary: "#27272a",
-        tertiary: "#C6A5F1",
+        background: "#171717",
+        surface:"#1c1c1c",
+        primary: "#232323",
+        secondary: "#2f2f2f",
+        tertiary: "#27272a",
         neutral:"#666666",
         accent1: "#ffebcd",
         accent2: "#C94343",
@@ -20,4 +20,6 @@ export default {
   plugins: [],
 };
 
+        // tertiary: "#27272a",
+        // tertiary: "#27272a",
 // surface: "#2c2c2c",
