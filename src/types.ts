@@ -45,3 +45,12 @@ export type apiResponseT<T> = {
 export type tokenT = {
   token: string;
 }
+
+type ImageObject = {
+  url:string
+}
+
+export type iconUrlT = {
+  favicon: string | null;
+  image: ImageObject[]  | null;
+}

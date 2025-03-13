@@ -1,4 +1,4 @@
-import CreateNewLink from "./CreateNewLink";
+import CreateNewLink from "./CreateNewLink/CreateNewLink";
 import FolderInfo from "../Folders/FolderOptions/FolderInfo";
 
 function LinksOptions() {
