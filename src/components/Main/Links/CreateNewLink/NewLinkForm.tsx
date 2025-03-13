@@ -57,24 +57,24 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
     mutationFn: MutateFn,
     onMutate: async () => {
       const urlData = await getUrl({url:linkInfo.link_url})
-      if(urlData.data){
-        if(urlData.data.favicon){
-          setLinkInfo(prev => {
-            return{
-              ...prev,
-              link_icon_url:urlData.data?.favicon
-            }
-          })
-          else if(urlData.data.image){
-            setLinkInfo(prev => {
-              return{
-                ...prev,
-                link_icon_url:urlData.data?.image
-              }
-            })
-          }
-        }
-      }
+      // if(urlData.data){
+      //   if(urlData.data.favicon){
+      //     setLinkInfo(prev => {
+      //       return{
+      //         ...prev,
+      //         link_icon_url:urlData.data?.favicon
+      //       }
+      //     })
+      //   }
+      //   else if(urlData.data.image){
+      //     setLinkInfo(prev => {
+      //       return{
+      //         ...prev,
+      //         link_icon_url:urlData.data?.image
+      //       }
+      //     })
+      //   }
+      // }
       setLinkInfo((prev) => {
         return {
           ...prev,
