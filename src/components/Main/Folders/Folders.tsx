@@ -20,7 +20,7 @@ function Folders() {
     queryFn: async () => {
       const response = await fetch("http://localhost:5000/api/folders");
       const data: apiResponseT<Array<folderT>> = await response.json();
-      await new Promise((resolve) => setTimeout(resolve, 2500));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       return data;
     },
   });

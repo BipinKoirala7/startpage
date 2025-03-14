@@ -1,4 +1,4 @@
-import { ReactNode, useCallback, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import IconButton from "../Buttons/IconButton";
 import { RxCross2 } from "react-icons/rx";
@@ -78,7 +78,7 @@ function Menu({ open, parentRef, children, direction, closeFn }: MenuPropsT) {
             top: top,
             left: left
         });
-    }, [parentRect, direction, modalContainerRef.current]);
+    }, [parentRect, direction]);
 
     const modalRoot = document.getElementById("modal");
     if (!modalRoot || !open || !parentRect) return null;

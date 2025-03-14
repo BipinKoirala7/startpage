@@ -3,7 +3,6 @@ import { v4 as uuid } from "uuid";
 
 import { FaCircleInfo } from "react-icons/fa6";
 import ModalContext from "./ModalContext";
-import { informativeClass } from "../../util/util";
 
 export type ModalContent = {
   icon: JSX.Element;
@@ -26,7 +25,7 @@ export default function ModalContextProvider({
 }) {
   const [modalContent, setModalContent] = useState<modalContentArr>([
     {
-      icon: <FaCircleInfo className={`${informativeClass}`} />,
+      icon: <FaCircleInfo className={``} />,
       content: (
         <p>
           this is the context moda element's 
