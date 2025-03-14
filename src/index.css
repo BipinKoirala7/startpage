@@ -29,3 +29,8 @@ body{
     height: 100dvh;
     width:100dvw;
 }
+
+.text-ellipsis{
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

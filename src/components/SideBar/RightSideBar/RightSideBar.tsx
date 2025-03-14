@@ -1,6 +1,6 @@
 import { useUser } from "../../../hooks/useUser";
 import TodoList from "./TodoList";
-import Notes from "./Notes";
+import Notes from "./Notes/Notes";
 import User from "./User";
 import Timer from "./Timer";
 import WeatherBox from "./WeatherBox";
@@ -11,7 +11,7 @@ function RightSideBar() {
   console.log(user);
   return (
     <div
-      className="w-full h-full  hidden flex-col justify-between items-center py-4 bg-surface
+      className="w-full h-full  hidden flex-col justify-between items-center py-4 text-text bg-surface
         sm:
         md:flex
         lg:

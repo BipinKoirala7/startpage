@@ -8,10 +8,11 @@ type MenuPropsT = {
     open: boolean;
     parentRef: React.RefObject<HTMLElement>;
     direction: "top" | "left" | "right" | "bottom" | "top-left" | "top-right" | "bottom-left" | "bottom-right" | "center",
-    closeFn: () => void
+    closeFn: () => void,
+    className?: string
 };
 
-function Menu({ open, parentRef, children, direction, closeFn }: MenuPropsT) {
+function Menu({ open, parentRef, children, direction, closeFn,className }: MenuPropsT) {
     const [position, setPosition] = useState({
         top: "0px",
         left: "0px"
@@ -86,7 +87,7 @@ function Menu({ open, parentRef, children, direction, closeFn }: MenuPropsT) {
     return createPortal(
         <div
             ref={modalContainerRef}
-            className="absolute bg-primary rounded-lg p-3 shadow-lg"
+            className={`${className} absolute bg-primary rounded-lg p-3 shadow-md text-text flex`}
             style={position}
         >
             {children}

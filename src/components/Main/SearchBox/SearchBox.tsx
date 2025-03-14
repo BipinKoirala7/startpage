@@ -27,7 +27,7 @@ function SearchBox() {
   return (
     <div className="flex w-full h-full items-center justify-center ">
       <div
-        className="flex w-[100%] justify-between items-center bg-secondary rounded-[2rem] p-1
+        className="flex w-[100%] justify-between items-center bg-tertiary rounded-[2rem] p-1
           sm: 
           md:w-[75%]
           lg:w-[65%]

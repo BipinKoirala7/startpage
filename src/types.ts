@@ -35,6 +35,15 @@ export type userT = {
   created_at: string;
 };
 
+export type noteT = {
+  user_id: string;
+  note_id: string;
+  note_title: string;
+  note_content: string;
+  created_At: string;
+  updated_At: string;
+};
+
 export type apiResponseT<T> = {
   error: boolean;
   data: T | null;
