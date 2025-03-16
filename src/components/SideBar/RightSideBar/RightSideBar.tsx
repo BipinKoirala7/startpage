@@ -1,10 +1,10 @@
 import { useUser } from "../../../hooks/useUser";
-import TodoList from "./TodoList";
+import TodoList from "./TodoList/TodoList";
 import Notes from "./Notes/Notes";
-import User from "./User";
-import Timer from "./Timer";
-import WeatherBox from "./WeatherBox";
-import DateAndTime from "./DateAndTime";
+import User from "./User/User";
+import Timer from "./Timer/Timer";
+import WeatherBox from "./Weather/WeatherBox";
+import DateAndTime from "./DateAndTime/DateAndTime";
 
 function RightSideBar() {
   const user = useUser();

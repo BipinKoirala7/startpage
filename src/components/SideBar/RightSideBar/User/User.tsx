@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { CiUser } from "react-icons/ci";
 
-import IconButton from "../../UI/Buttons/IconButton";
-import Modal from "../../UI/Modal/Modal";
+import IconButton from "../../../UI/Buttons/IconButton";
+import Modal from "../../../UI/Modal/Modal";
 
 function User() {
   const [isOpen, setIsOpen] = useState(false);

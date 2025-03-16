@@ -3,12 +3,9 @@ import { useRef, useState } from "react";
 
 import IconButton from "../../../UI/Buttons/IconButton";
 import Menu from "../../../UI/Modal/Menu";
-import AddNoteBtn from "./AddNoteBtn";
-import useNoteStore from "../../../../store/useNoteStore";
-import NoteBox from "./NotesBox";
+import NotesContainer from "./NotesContainer";
 
 function Notes() {
-  const notes = useNoteStore(state => state.notes)
   const parentRef = useRef<HTMLDivElement | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -27,17 +24,9 @@ function Notes() {
         closeFn={() => setIsOpen(false)}
         direction="top-left"
         parentRef={parentRef}
-        className="w-fit text-text"
+        className="w-fit text-text max-w-[40rem] max-h-[25rem] overflow-y-auto"
       >
-        <div className="flex flex-col gap-4 px-2 py-1">
-          <p className="text-[1.25rem]">Notes</p>
-          <div className="bg-primary rounded-lg  grid grid-cols-2 gap-4 w-fit">
-            {notes.map((item) => {
-              return <NoteBox {...item} key={item.note_id} />;
-            })}
-          </div>
-          <AddNoteBtn />
-        </div>
+        <NotesContainer />
       </Menu>
     </div>
   );

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { MdOutlineTimer } from "react-icons/md";
 
-import IconButton from "../../UI/Buttons/IconButton";
-import Modal from "../../UI/Modal/Modal";
+import IconButton from "../../../UI/Buttons/IconButton";
+import Modal from "../../../UI/Modal/Modal";
 
 function Timer() {
   const [isOpen, setIsOpen] = useState(false);

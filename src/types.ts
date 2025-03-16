@@ -40,9 +40,14 @@ export type noteT = {
   note_id: string;
   note_title: string;
   note_content: string;
-  created_At: string;
-  updated_At: string;
+  created_at: string;
+  updated_at: string;
 };
+
+export type patchMethod = {
+  changeProperty: string;
+  new_value: string;
+}
 
 export type apiResponseT<T> = {
   error: boolean;

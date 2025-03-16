@@ -1,8 +1,8 @@
 import { LuListTodo } from "react-icons/lu";
 import { useState } from "react";
 
-import IconButton from "../../UI/Buttons/IconButton";
-import Modal from "../../UI/Modal/Modal";
+import IconButton from "../../../UI/Buttons/IconButton";
+import Modal from "../../../UI/Modal/Modal";
 
 function TodoList() {
   const [isOpen, setIsOpen] = useState(false);

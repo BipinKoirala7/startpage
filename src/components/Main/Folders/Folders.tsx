@@ -18,7 +18,7 @@ function Folders() {
   const { isError, data, isLoading } = useQuery({
     queryKey: ["folders"],
     queryFn: async () => {
-      const response = await fetch("http://localhost:5000/api/folders");
+      const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/folders`);
       const data: apiResponseT<Array<folderT>> = await response.json();
       await new Promise((resolve) => setTimeout(resolve, 1000));
       return data;

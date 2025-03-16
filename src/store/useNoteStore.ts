@@ -11,6 +11,7 @@ type action = {
   updateNote: (note: noteT) => void;
   deleteNote: (note: noteT) => void;
   setSelectedNote: (note: noteT | null) => void;
+  loadNotes: (notes: noteT[]) => void;
 };
 
 const useNoteStore = create<state & action>()((set) => ({
@@ -41,6 +42,7 @@ const useNoteStore = create<state & action>()((set) => ({
         item.note_id === note.note_id ? note : item
       ),
     })),
+  loadNotes:(notes:noteT[]) => set(() => ({notes})),
   deleteNote: (note: noteT) =>
     set((state) => ({
       notes: state.notes.filter((item) => item.note_id !== note.note_id),
