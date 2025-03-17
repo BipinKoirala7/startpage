@@ -44,6 +44,14 @@ export type noteT = {
   updated_at: string;
 };
 
+export type todoT = {
+  user_id: string;
+  todo_id: string;
+  todo_title: string;
+  todo_description: string;
+  created_at: string;
+};
+
 export type patchMethod = {
   changeProperty: string;
   new_value: string;

@@ -19,9 +19,7 @@ function NotesContainer() {
     queryKey: ["notes"],
     queryFn: async () => {
       try {
-        const data = await getNoteByUserId(
-          "33ddf372-5f0d-48ec-a810-696213b6282f"
-        );
+        const data = await getNoteByUserId("33ddf372-5f0d-48ec-a810-696213b6282f");
         await new Promise((resolve) => setTimeout(resolve, 1000));
         return data.data;
       } catch (error) {
@@ -38,18 +36,8 @@ function NotesContainer() {
     }
   }, [data, loadLinks]);
 
-  if (isError) {
-    return (
-      <div
-        className={`w-full h-full flex items-center justify-center gap-4 bg-surface`}
-      >
-        Error occured
-      </div>
-    );
-  }
-
   return (
-    <div className="flex flex-col gap-4 px-2 py-1 w-full h-full">
+    <div className="flex flex-col gap-2 px-1 w-full h-full">
       <p className="text-[1.25rem]">Notes</p>
       <div className="flex items-center gap-2 bg-secondary rounded-md px-2 py-1 w-full">
         <CiSearch className="text-[1.25rem] text-text" />
@@ -60,9 +48,11 @@ function NotesContainer() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="rounded-lg  grid grid-cols-2 gap-4 overflow-y-auto p-1">
+      <div className="rounded-lg grid grid-cols-2 gap-4 overflow-y-auto p-1">
         {isLoading ? (
           <SkeletonUI count={4} width={160} height={125} />
+        ) : isError ? (
+          <>Error while Loading</>
         ) : (
           getFilteredNotes(notes, search).map((item) => {
             return <NoteBox note={item} key={item.note_id} />;

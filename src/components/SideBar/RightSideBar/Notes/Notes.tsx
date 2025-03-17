@@ -24,7 +24,7 @@ function Notes() {
         closeFn={() => setIsOpen(false)}
         direction="top-left"
         parentRef={parentRef}
-        className="w-fit text-text max-w-[40rem] max-h-[25rem] overflow-y-auto"
+        className="w-fit text-text max-w-[40rem] max-h-[25rem] overflow-y-auto p-2"
       >
         <NotesContainer />
       </Menu>

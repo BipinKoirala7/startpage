@@ -29,10 +29,8 @@ function AddNoteBtn() {
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     };
-    console.log("New Note",newNote);
     try {
       const data = await createNote(newNote);
-      console.log("Create Note", data);
       if (data.error) {
         throw new Error("Invalid Data recieved");
       } else {

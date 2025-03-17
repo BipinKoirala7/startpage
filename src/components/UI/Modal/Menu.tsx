@@ -90,7 +90,7 @@ function Menu({
             (modalContainerRef.current!.offsetHeight * 1) / 2 +
             "px";
           left =
-            parentRect.left - modalContainerRef.current!.offsetWidth + "px";
+            parentRect.left - modalContainerRef.current!.offsetWidth - parentRect.width*1/5 + "px";
           break;
         case "right":
           top =
@@ -98,28 +98,29 @@ function Menu({
             (parentRect.width * 1) / 2 -
             (modalContainerRef.current!.offsetHeight * 1) / 2 +
             "px";
-          left = parentRect.right + "px";
+          left = parentRect.right + parentRect.width*1/5+ "px";
           break;
         case "top-left":
-          top = parentRect.top - modalContainerRef.current!.offsetHeight + "px";
+          top = parentRect.bottom - modalContainerRef.current!.offsetHeight + "px";
           left =
             parentRect.right -
             modalContainerRef.current!.offsetWidth -
-            parentRect.width +
+            parentRect.width -
+            (parentRect.width * 1) / 5+
             "px";
           break;
         case "top-right":
-          top = parentRect.top - modalContainerRef.current!.offsetHeight + "px";
-          left = parentRect.right + "px";
+          top = parentRect.bottom - modalContainerRef.current!.offsetHeight + "px";
+          left = parentRect.right + (parentRect.width * 1) / 5 + "px";
           break;
         case "bottom-left":
-          top = parentRect.bottom + "px";
+          top = parentRect.top + "px";
           left =
-            parentRect.left - modalContainerRef.current!.offsetWidth + "px";
+            parentRect.left - modalContainerRef.current!.offsetWidth - parentRect.width*1/5 + "px";
           break;
         case "bottom-right":
-          top = parentRect.bottom + "px";
-          left = parentRect.right + "px";
+          top = parentRect.top + "px";
+          left = parentRect.right + parentRect.width*1/5 + "px";
           break;
         case "center":
           top =
