@@ -15,25 +15,7 @@ type action = {
 };
 
 const useNoteStore = create<state & action>()((set) => ({
-  notes: [
-    {
-      user_id: "1",
-      note_id: "13",
-      note_title: "Grocieries that my mom told me to take",
-      note_content: "I should be able to finish this project in this month",
-      created_At: "2023-03-01T00:00:00.000Z",
-      updated_At: "2023-03-01T00:00:00.000Z",
-    },
-    {
-      user_id: "1",
-      note_id: "23",
-      note_title:
-        "Assignments that I have to submit by the tomorrow's deadline",
-      note_content: "Homework is a terribel thing to do",
-      created_At: "2023-03-02T00:00:00.000Z",
-      updated_At: "2023-03-02T00:00:00.000Z",
-    },
-  ],
+  notes: [],
   selectedNote: null,
   addNote: (note: noteT) => set((state) => ({ notes: [...state.notes, note] })),
   updateNote: (note: noteT) =>

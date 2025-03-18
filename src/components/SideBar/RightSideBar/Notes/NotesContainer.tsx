@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { CiSearch } from "react-icons/ci";
+import { useEffect, useState } from "react";
 
 import useNoteStore from "../../../../store/useNoteStore";
 import AddNoteBtn from "./AddNoteBtn";
@@ -8,22 +9,28 @@ import {
   getFilteredNotes,
   getNoteByUserId,
 } from "../../../../util/noteFunctions";
-import { useEffect, useState } from "react";
 import Input from "../../../UI/Input";
 import SkeletonUI from "../../../UI/SkeletonUI";
+import noNotes from "../../../../../public/noData.svg";
 
 function NotesContainer() {
+  let content;
   const [search, setSearch] = useState("");
 
-  const { isLoading, isError, data } = useQuery({
+  const { isLoading, isError, data, error } = useQuery({
     queryKey: ["notes"],
     queryFn: async () => {
       try {
-        const data = await getNoteByUserId("33ddf372-5f0d-48ec-a810-696213b6282f");
+        const data = await getNoteByUserId(
+          "33ddf372-5f0d-48ec-a810-696213b6282f"
+        );
         await new Promise((resolve) => setTimeout(resolve, 1000));
         return data.data;
       } catch (error) {
-        console.log(error);
+        if (error instanceof Error) {
+          throw new Error(error.message || "An unexpected error occurred.");
+        }
+        throw new Error("An unexpected error occurred.");
       }
     },
   });
@@ -34,7 +41,32 @@ function NotesContainer() {
     if (data) {
       loadLinks(data);
     }
-  }, [data, loadLinks]);
+  }, [data, loadLinks,notes]);
+
+  if (isLoading) {
+    content = <SkeletonUI count={4} width={150} height={100} />;
+  }
+
+  if (isError) {
+    content = (
+      <>
+        <p>{error.message}</p>
+      </>
+    );
+  }
+
+  if (data && data.length === 0) {
+    content = (
+      <div className="col-span-2 flex flex-col gap-2 items-center p-1">
+        <img src={noNotes} alt="No Data Available" className="w-32" />
+        <p>No Notes available</p>
+      </div>
+    );
+  } else {
+    content = getFilteredNotes(notes, search).map((item) => {
+      return <NoteBox note={item} key={item.note_id} />;
+    });
+  }
 
   return (
     <div className="flex flex-col gap-2 px-1 w-full h-full">
@@ -49,15 +81,7 @@ function NotesContainer() {
         />
       </div>
       <div className="rounded-lg grid grid-cols-2 gap-4 overflow-y-auto p-1">
-        {isLoading ? (
-          <SkeletonUI count={4} width={160} height={125} />
-        ) : isError ? (
-          <>Error while Loading</>
-        ) : (
-          getFilteredNotes(notes, search).map((item) => {
-            return <NoteBox note={item} key={item.note_id} />;
-          })
-        )}
+        {content}
       </div>
       <AddNoteBtn />
     </div>

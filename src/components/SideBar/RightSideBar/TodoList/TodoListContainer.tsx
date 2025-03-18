@@ -1,16 +1,18 @@
 import { CiSearch } from "react-icons/ci";
+import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
+import noTodo from "../../../../../public/noData.svg";
+
 import Input from "../../../UI/Input";
 import SkeletonUI from "../../../UI/SkeletonUI";
-import IconButton from "../../../UI/Buttons/IconButton";
-import { GoPlus } from "react-icons/go";
-import useTodoStore from "../../../../store/useTodoStore";
-import { useQuery } from "@tanstack/react-query";
-import { getTodoListByUserId } from "../../../../util/TodoFunction";
-import { useEffect } from "react";
+import AddTodoListBtn from "./AddTodoList/AddTodoListBtn";
+import { getTodoListByUserId } from "../../../../util/TodoListFunction";
+import ViewTodoList from "./ViewTodoList/ViewTodoList";
+import useTodoListStore from "../../../../store/useTodoListStore";
 
 function TodoListContainer() {
   let content;
-  const loadTodos = useTodoStore((state) => state.loadTodos);
+  const loadTodoList= useTodoListStore((state) => state.loadTodoList);
 
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["todolist"],
@@ -19,7 +21,6 @@ function TodoListContainer() {
         const response = await getTodoListByUserId(
           "33ddf372-5f0d-48ec-a810-696213b6282f"
         );
-        console.log("after the function returns", response);
         await new Promise((resolve) => setTimeout(resolve, 1000));
         return response.data;
       } catch (error: unknown) {
@@ -33,9 +34,9 @@ function TodoListContainer() {
 
   useEffect(() => {
     if (data) {
-      loadTodos(data);
+      loadTodoList(data);
     }
-  }, [data, loadTodos]);
+  }, [data, loadTodoList]);
 
   if (isLoading) {
     content = <SkeletonUI count={4} width={150} height={100} />;
@@ -51,23 +52,19 @@ function TodoListContainer() {
 
   if (data && data.length === 0) {
     content = (
-      <>
-        <p>No Todo Lists Available</p>
-      </>
+      <div className="col-span-2 flex flex-col gap-2 items-center p-1">
+        <img src={noTodo} alt="No Data Available" className="w-32" />
+        <p>No to do list available</p>
+      </div>
     );
   }
 
   if (data && data.length > 0) {
     content = (
       <>
-        {data.map((item) => {
-            return (
-              <div className="flex items-center gap-2">
-                    <input type="checkbox" key={item.todo_id} id={item.todo_id} name={item.todo_id} value={item.todo_id} />
-                    <label htmlFor={item.todo_id}>{item.todo_title}</label>
-              </div>
-            );
-        })}
+          {data.map((item) => (
+            <ViewTodoList key={item.todo_list_id} todoList={item} />
+          ))}
       </>
     );
   }
@@ -88,10 +85,7 @@ function TodoListContainer() {
           {content}
         </div>
       </div>
-      <IconButton className="w-full p-2 rounded-md border-[1px] border-secondary hover:bg-secondary">
-        <GoPlus className="text-[1.25rem]" />
-        Add Todo List
-      </IconButton>
+      <AddTodoListBtn />
     </div>
   );
 }

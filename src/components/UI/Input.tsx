@@ -1,20 +1,22 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, forwardRef } from "react";
 
 type InputPropsT = {
-  value?: string,
-  name?:string,
-  className: string,
-  id?: string,
-  type: "text" | "number",
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void,
-  disabled?: boolean,
-  placeholder?:string
+  value?: string;
+  name?: string;
+  className: string;
+  id?: string;
+  type: "text" | "number";
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
+  placeholder?: string;
 };
 
-function Input(props: InputPropsT) {
-  const { className, type, value, id, onChange,disabled,name,placeholder } = props;
+const Input = forwardRef<HTMLInputElement, InputPropsT>((props, ref) => {
+  const { className, type, value, id, onChange, disabled, name, placeholder } =
+    props;
   return (
     <input
+      ref={ref}
       id={id}
       value={value}
       type={type}
@@ -25,6 +27,6 @@ function Input(props: InputPropsT) {
       placeholder={placeholder}
     />
   );
-}
+});
 
 export default Input;

@@ -44,10 +44,18 @@ export type noteT = {
   updated_at: string;
 };
 
+export type todoListT = {
+  user_id: string,
+  todo_list_id: string,
+  todo_list_title: string,
+  created_at: string,
+  updated_at: string,
+}
+
 export type todoT = {
   user_id: string;
+  todo_list_id: string;
   todo_id: string;
-  todo_title: string;
   todo_description: string;
   created_at: string;
 };

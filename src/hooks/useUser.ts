@@ -4,9 +4,9 @@ import { userT } from "../types";
 import { useToken } from "./useToken";
 
 export const useUser = (): userT | null => {
-    const {token} = useToken();
+  const { token } = useToken();
 
-  const getUserFromPayload = (token:string):userT => {
+  const getUserFromPayload = (token: string): userT => {
     const payload = token.split(".")[1];
     const decodedPayload = atob(payload);
     return JSON.parse(decodedPayload);
