@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import Input from "../../../../UI/Input";
-// import TextArea from "../../../../UI/TextArea";
 
 type TodoBoxPropsT = {
   todo_description: string;

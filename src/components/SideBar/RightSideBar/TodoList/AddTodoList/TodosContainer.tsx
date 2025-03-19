@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 
 import TodoBox from "./TodoBox";
 import { todoT } from "../../../../../types";
+import { createTodo } from "../../../../../util/TodoFunction";
 
 type TodosContainerPropsT = {
   todo_list_id: string;
@@ -10,9 +11,8 @@ type TodosContainerPropsT = {
 };
 
 function TodosContainer({ todo_list_id, user_id }: TodosContainerPropsT) {
-  const created_time = new Date();
-
-  const createNewTodo = (): todoT => {
+  const createNewTodo = useCallback((): todoT => {
+    const created_time = new Date();
     return {
       user_id: user_id,
       todo_list_id: todo_list_id,
@@ -20,9 +20,25 @@ function TodosContainer({ todo_list_id, user_id }: TodosContainerPropsT) {
       todo_description: "",
       created_at: created_time.toISOString(),
     };
-  };
+  }, [user_id, todo_list_id]);
 
   const [todosArr, setTodosArr] = useState<todoT[]>([createNewTodo()]);
+
+  async function handleAddTodo() {
+    try {
+      for (const todo of todosArr) {
+        await new Promise((resolve) => {
+          createTodo(todo).then(resolve);
+        });
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message || "An unexpected error occurred.");
+      } else {
+        throw new Error("An unexpected error occurred.");
+      }
+    }
+  }
 
   function handleChange(
     todo_id: string,
@@ -56,16 +72,12 @@ function TodosContainer({ todo_list_id, user_id }: TodosContainerPropsT) {
         }
       }
       if (e.key === "Backspace") {
-        console.log(e.target)
-        if (todosArr.length == 1) {
-          console.log("returning")
-          return
+        const target = e.target as HTMLInputElement;
+        if (todosArr.length === 1) {
+          return;
         }
-        else {
-          const target = e.target as HTMLInputElement;
-          if (target && target.id) {
-            removeTodoFromList(target.id);
-          }
+        if (target && target.id && target.value === "") {
+          removeTodoFromList(target.id);
         }
       }
     }

@@ -32,9 +32,9 @@ function AddNoteBtn() {
     try {
       const data = await createNote(newNote);
       if (data.error) {
-        throw new Error("Invalid Data recieved");
+        throw new Error("Invalid Data received");
       } else {
-        addNote(newNote);
+        addNote(newNote); // Ensure state is updated immediately
       }
     } catch (error) {
       console.log(error);
@@ -45,9 +45,11 @@ function AddNoteBtn() {
     mutationFn: mutateFn,
     onSuccess: () => {
       console.log("Successfully added a note");
+      setNoteTitle(""); 
+      setNoteDescription("");
     },
     onError: (error) => {
-      console.log("Error occured in Add Note Btn", error);
+      console.log("Error occurred in Add Note Btn", error);
     },
   });
 
@@ -72,8 +74,8 @@ function AddNoteBtn() {
           <p>New Note</p>
           <div className="flex flex-col gap-2 h-full">
             <TextArea
-              placeholder="Title"
-              className="text-[1.25rem] h-fit"
+              placeholder="Title..."
+              className="text-[1.25rem]"
               onChange={(e) => {
                 setNoteTitle(e.target.value);
               }}
@@ -94,8 +96,8 @@ function AddNoteBtn() {
           <IconButton
             className="border-secondary border-[1px] text-text rounded-md px-4 py-2 text-center hover:bg-secondary transition-colors duration-250 cursor-pointer"
             onClick={() => {
-              mutate();
-              setIsOpen(false);
+              mutate(); // Trigger mutation
+              setIsOpen(false); // Close the modal
             }}
           >
             Add Note

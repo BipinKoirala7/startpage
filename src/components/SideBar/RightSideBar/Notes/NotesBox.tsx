@@ -43,7 +43,7 @@ function NoteBox(props: NoteBoxPropsT) {
         closeFn={() => setIsOpen(false)}
         className="min-w-[20rem] flex"
       >
-        <ViewNote note={props.note} />
+        <ViewNote note={props.note} closeFn={ ()=> setIsOpen(false)} />
       </Menu>
     </>
   );

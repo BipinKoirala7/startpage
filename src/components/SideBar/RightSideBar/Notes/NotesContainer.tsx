@@ -14,7 +14,6 @@ import SkeletonUI from "../../../UI/SkeletonUI";
 import noNotes from "../../../../../public/noData.svg";
 
 function NotesContainer() {
-  let content;
   const [search, setSearch] = useState("");
 
   const { isLoading, isError, data, error } = useQuery({
@@ -37,36 +36,17 @@ function NotesContainer() {
   const notes = useNoteStore((state) => state.notes);
   const loadLinks = useNoteStore((state) => state.loadNotes);
 
+  console.log(notes)
+
   useEffect(() => {
     if (data) {
       loadLinks(data);
     }
-  }, [data, loadLinks,notes]);
+  }, [data, loadLinks]);
 
-  if (isLoading) {
-    content = <SkeletonUI count={4} width={150} height={100} />;
-  }
-
-  if (isError) {
-    content = (
-      <>
-        <p>{error.message}</p>
-      </>
-    );
-  }
-
-  if (data && data.length === 0) {
-    content = (
-      <div className="col-span-2 flex flex-col gap-2 items-center p-1">
-        <img src={noNotes} alt="No Data Available" className="w-32" />
-        <p>No Notes available</p>
-      </div>
-    );
-  } else {
-    content = getFilteredNotes(notes, search).map((item) => {
-      return <NoteBox note={item} key={item.note_id} />;
-    });
-  }
+  useEffect(() => {
+    console.log("Notes changed:", notes);
+  }, [notes]);
 
   return (
     <div className="flex flex-col gap-2 px-1 w-full h-full">
@@ -81,7 +61,20 @@ function NotesContainer() {
         />
       </div>
       <div className="rounded-lg grid grid-cols-2 gap-4 overflow-y-auto p-1">
-        {content}
+        {isLoading ? (
+          <SkeletonUI count={4} width={150} height={100} />
+        ) : isError ? (
+          <p>{error.message}</p>
+        ) : data && data.length === 0 ? (
+          <div className="col-span-2 flex flex-col gap-2 items-center p-1">
+            <img src={noNotes} alt="No Data Available" className="w-32" />
+            <p>No Notes available</p>
+          </div>
+        ) : (
+          getFilteredNotes(notes, search).map((item) => (
+            <NoteBox note={item} key={item.note_id} />
+          ))
+        )}
       </div>
       <AddNoteBtn />
     </div>

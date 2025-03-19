@@ -14,10 +14,11 @@ import NoteContent from "./NoteContent";
 
 type viewNotePropsT = {
   note: noteT;
+  closeFn: () => void;
 };
 
 function ViewNote(props: viewNotePropsT) {
-  const { note } = props;
+  const { note, closeFn } = props;
 
   const [noteInfo, setNoteInfo] = useState<noteT>({
     user_id: note.user_id,
@@ -35,6 +36,7 @@ function ViewNote(props: viewNotePropsT) {
 
   const mutatFn = async () => {
     try {
+      console.log(isTitleUpdated, isContentUpdated);
       if (isTitleUpdated) {
         const patchInfo: patchMethod = {
           changeProperty: "note_title",
@@ -60,7 +62,7 @@ function ViewNote(props: viewNotePropsT) {
   const { mutate, isPending } = useMutation({
     mutationFn: mutatFn,
     onSuccess: () => {
-      console.log("Successfully updated a note");
+      closeFn();
     },
   });
 

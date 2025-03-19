@@ -17,14 +17,18 @@ type action = {
 const useNoteStore = create<state & action>()((set) => ({
   notes: [],
   selectedNote: null,
-  addNote: (note: noteT) => set((state) => ({ notes: [...state.notes, note] })),
+  addNote: (note: noteT) =>
+    set((state) => {
+      const updatedNotes = [...state.notes, note];
+      return { notes: updatedNotes };
+    }),
   updateNote: (note: noteT) =>
     set((state) => ({
       notes: state.notes.map((item) =>
-        item.note_id === note.note_id ? note : item
+        item.note_id === note.note_id ? {...note} : item
       ),
     })),
-  loadNotes:(notes:noteT[]) => set(() => ({notes})),
+  loadNotes: (notes: noteT[]) => set(() => ({ notes })),
   deleteNote: (note: noteT) =>
     set((state) => ({
       notes: state.notes.filter((item) => item.note_id !== note.note_id),

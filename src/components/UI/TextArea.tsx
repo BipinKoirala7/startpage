@@ -18,8 +18,8 @@ function TextArea({
   onChange,
   placeholder,
 }: TextAreaPropsT) {
-  const rowLength = value?.split("\n").length || 1;
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = "auto";
@@ -29,13 +29,13 @@ function TextArea({
   return (
     <textarea
       ref={textAreaRef}
-      rows={rowLength}
       name={name}
       id={id}
       value={value}
-      className={`${className} max-w-full bg-transparent text-text px-0 py-1 text-[1.25rem] flex-grow resize-none outline-none border-none`}
+      className={`${className} max-w-full bg-transparent text-text resize-none outline-none`}
       onChange={onChange}
       placeholder={placeholder}
+      rows={1}
     />
   );
 }
