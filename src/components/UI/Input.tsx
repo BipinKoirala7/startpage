@@ -21,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputPropsT>((props, ref) => {
       value={value}
       type={type}
       onChange={onChange}
-      className={`${className} px-2 py-1 bg-secondary text-text rounded-md outline-none border-none`}
+      className={`${className} bg-secondary text-text rounded-md outline-none border-none`}
       disabled={disabled}
       name={name}
       placeholder={placeholder}

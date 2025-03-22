@@ -8,9 +8,10 @@ import { createTodo } from "../../../../../util/TodoFunction";
 type TodosContainerPropsT = {
   todo_list_id: string;
   user_id: string;
+  save:boolean
 };
 
-function TodosContainer({ todo_list_id, user_id }: TodosContainerPropsT) {
+function TodosContainer({ todo_list_id, user_id,save }: TodosContainerPropsT) {
   const createNewTodo = useCallback((): todoT => {
     const created_time = new Date();
     return {
@@ -24,7 +25,7 @@ function TodosContainer({ todo_list_id, user_id }: TodosContainerPropsT) {
 
   const [todosArr, setTodosArr] = useState<todoT[]>([createNewTodo()]);
 
-  async function handleAddTodo() {
+  const handleAddTodo = useCallback(async () => {
     try {
       for (const todo of todosArr) {
         await new Promise((resolve) => {
@@ -38,7 +39,7 @@ function TodosContainer({ todo_list_id, user_id }: TodosContainerPropsT) {
         throw new Error("An unexpected error occurred.");
       }
     }
-  }
+  }, [todosArr]);
 
   function handleChange(
     todo_id: string,
@@ -85,7 +86,11 @@ function TodosContainer({ todo_list_id, user_id }: TodosContainerPropsT) {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [createNewTodo, todosArr.length]);
 
-  console.log(todosArr);
+  useEffect(() => {
+    if (save) {
+      handleAddTodo();
+   }
+  },[handleAddTodo, save])
 
   return (
     <div className="flex flex-col gap-2">

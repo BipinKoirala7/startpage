@@ -12,7 +12,7 @@ import useTodoListStore from "../../../../store/useTodoListStore";
 
 function TodoListContainer() {
   let content;
-  const loadTodoList= useTodoListStore((state) => state.loadTodoList);
+  const loadTodoList = useTodoListStore((state) => state.loadTodoList);
 
   const { isLoading, data, isError, error } = useQuery({
     queryKey: ["todolist"],
@@ -62,16 +62,15 @@ function TodoListContainer() {
   if (data && data.length > 0) {
     content = (
       <>
-          {data.map((item) => (
-            <ViewTodoList key={item.todo_list_id} todoList={item} />
-          ))}
+        {data.map((item) => (
+          <ViewTodoList key={item.todo_list_id} todoList={item} />
+        ))}
       </>
     );
   }
 
   return (
-    <div className="flex flex-col gap-2 px-1">
-      <p className="text-[1.25rem]">Todo List</p>
+    <div className="flex flex-col gap-2 p-2">
       <div className="flex flex-col gap-2">
         <div className="w-full flex gap-2 items-center bg-secondary px-2 py-1 rounded-md">
           <CiSearch className="text-[1.5rem]" />
@@ -81,9 +80,7 @@ function TodoListContainer() {
             className="w-full bg-transparent"
           />
         </div>
-        <div className="grid grid-cols-2 gap-4 overflow-y-auto p-1">
-          {content}
-        </div>
+        <div className="grid grid-cols-2 gap-4 overflow-y-auto">{content}</div>
       </div>
       <AddTodoListBtn />
     </div>

@@ -15,6 +15,7 @@ function AddTodoListBtn() {
   const todo_list_id = v4();
   const created_time = new Date();
   const user = useUser();
+ const [ save, setSave ] = useState(false);
 
   const [isOpen, setIsOpen] = useState(false);
   const parentRef = useRef<HTMLDivElement | null>(null);
@@ -53,19 +54,20 @@ function AddTodoListBtn() {
         </IconButton>
       </div>
       <Menu
+        header="New TodoList"
         open={isOpen}
         closeFn={() => setIsOpen(false)}
         className="w-fit"
         parentRef={parentRef}
         direction="center"
       >
-        <div className="flex flex-col gap-2">
-          <p>New TodoList</p>
+        <div className="flex flex-col gap-2 px-3 py-3">
           <TodoListTitle todoList={todoList} setTodoList={setTodoList} />
           <p className="text-[0.75rem] text-neutral">
             {created_time.toLocaleString()}
           </p>
           <TodosContainer
+            save={save}
             todo_list_id={todo_list_id}
             user_id={user?.user_id || "33ddf372-5f0d-48ec-a810-696213b6282f"}
           />
@@ -73,6 +75,7 @@ function AddTodoListBtn() {
             className="w-full bg-transparent border-[1px] border-secondary rounded-md hover:bg-secondary py-1"
             onClick={() => {
               mutate();
+              setSave(true);
               setIsOpen(false);
             }}
           >

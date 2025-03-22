@@ -20,11 +20,12 @@ function Notes() {
         <FaNoteSticky className="text-[1.5rem]" />
       </IconButton>
       <Menu
+        header="Notes"
         open={isOpen}
         closeFn={() => setIsOpen(false)}
         direction="top-left"
         parentRef={parentRef}
-        className="w-fit text-text max-w-[40rem] max-h-[25rem] overflow-y-auto p-2"
+        className="w-fit max-w-[40rem] max-h-[25rem] overflow-y-auto "
       >
         <NotesContainer />
       </Menu>

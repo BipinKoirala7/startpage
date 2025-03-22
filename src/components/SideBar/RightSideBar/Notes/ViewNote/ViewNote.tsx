@@ -96,7 +96,7 @@ function ViewNote(props: viewNotePropsT) {
   }, [noteInfo, note]);
 
   return (
-    <div className="flex flex-col gap-2 h-full p-4 w-full">
+    <div className="flex flex-col gap-2 h-full px-3 py-2 w-full">
       <div className="h-full w-full flex flex-col gap-2">
         <NoteTitle
           noteInfo={noteInfo}

@@ -21,6 +21,7 @@ function TodoList() {
         <LuListTodo className="text-[1.5rem]" />
       </IconButton>
       <Menu
+        header="Todo List"
         open={isOpen}
         closeFn={() => setIsOpen(false)}
         className=""

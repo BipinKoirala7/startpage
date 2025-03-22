@@ -21,6 +21,7 @@ function SettingsButton() {
         </IconButton>
       </div>
       <Menu
+        header="Settings"
         open={isOpen}
         parentRef={parentRef}
         direction="center"
@@ -28,8 +29,6 @@ function SettingsButton() {
         className="min-w-[20rem] flex"
       >
         <div className="flex flex-col gap-4 px-2 py-2 min-h-full min-w-full">
-          <p>Settings</p>
-          <div className="flex flex-col gap-2 h-full">
             <div className="flex flex-col gap-2 h-full">
               <p>Theme</p>
               <div className="flex gap-2 items-center">
@@ -51,7 +50,6 @@ function SettingsButton() {
                 <p>Off</p>
               </div>
             </div>
-          </div>
         </div>
       </Menu>
     </>

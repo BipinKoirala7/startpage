@@ -20,6 +20,7 @@ type MenuPropsT = {
     | "center";
   closeFn: () => void;
   className?: string;
+  header?: string;
 };
 
 function Menu({
@@ -29,13 +30,14 @@ function Menu({
   direction,
   closeFn,
   className,
+  header,
 }: MenuPropsT) {
   const [position, setPosition] = useState({
     top: "0px",
     left: "0px",
   });
   const [parentRect, setParentRect] = useState<DOMRect | undefined>(undefined);
-  const [ shouldShow, setShouldShow ] = useState(false);
+  const [shouldShow, setShouldShow] = useState(false);
   const modalContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -90,7 +92,10 @@ function Menu({
             (modalContainerRef.current!.offsetHeight * 1) / 2 +
             "px";
           left =
-            parentRect.left - modalContainerRef.current!.offsetWidth - parentRect.width*1/5 + "px";
+            parentRect.left -
+            modalContainerRef.current!.offsetWidth -
+            (parentRect.width * 1) / 5 +
+            "px";
           break;
         case "right":
           top =
@@ -98,29 +103,34 @@ function Menu({
             (parentRect.width * 1) / 2 -
             (modalContainerRef.current!.offsetHeight * 1) / 2 +
             "px";
-          left = parentRect.right + parentRect.width*1/5+ "px";
+          left = parentRect.right + (parentRect.width * 1) / 5 + "px";
           break;
         case "top-left":
-          top = parentRect.bottom - modalContainerRef.current!.offsetHeight + "px";
+          top =
+            parentRect.bottom - modalContainerRef.current!.offsetHeight + "px";
           left =
             parentRect.right -
             modalContainerRef.current!.offsetWidth -
             parentRect.width -
-            (parentRect.width * 1) / 5+
+            (parentRect.width * 1) / 5 +
             "px";
           break;
         case "top-right":
-          top = parentRect.bottom - modalContainerRef.current!.offsetHeight + "px";
+          top =
+            parentRect.bottom - modalContainerRef.current!.offsetHeight + "px";
           left = parentRect.right + (parentRect.width * 1) / 5 + "px";
           break;
         case "bottom-left":
           top = parentRect.top + "px";
           left =
-            parentRect.left - modalContainerRef.current!.offsetWidth - parentRect.width*1/5 + "px";
+            parentRect.left -
+            modalContainerRef.current!.offsetWidth -
+            (parentRect.width * 1) / 5 +
+            "px";
           break;
         case "bottom-right":
           top = parentRect.top + "px";
-          left = parentRect.right + parentRect.width*1/5 + "px";
+          left = parentRect.right + (parentRect.width * 1) / 5 + "px";
           break;
         case "center":
           top =
@@ -178,28 +188,51 @@ function Menu({
   }, [parentRect, direction]);
 
   const modalRoot = document.getElementById("modal");
-  if (!modalRoot || !open || !parentRect ) return null;
+  if (!modalRoot || !open || !parentRect) return null;
 
   return createPortal(
     <div
       ref={modalContainerRef}
-      className={`${className} absolute bg-primary rounded-lg p-3 shadow-lg border-[1px] border-secondary text-text flex max-h-screen overflow-hidden transition-transform duration-100 ${shouldShow ? "transform translate-y-0 opacity-100" : "transform translate-y-2 opacity-0"}`}
+      className={`${className} absolute bg-primary rounded-lg shadow-lg border-[1px] border-secondary text-text flex max-h-screen overflow-hidden transition-transform duration-100 ${
+        shouldShow
+          ? "transform translate-y-0 opacity-100"
+          : "transform translate-y-2 opacity-0"
+      }`}
       style={position}
     >
-      {children}
-      <button onClick={() => {
-        closeFn()
-        setShouldShow(false)
-      }} className="absolute top-1 right-1 text-text">
-        <IconButton
-          className="p-2 hover:bg-secondary rounded-md"
-          needTooltip={true}
-          tooltipPlaceholder={"close"}
-          tooltipDirection="top"
-        >
-          <RxCross2 />
-        </IconButton>
-      </button>
+      <div className="flex flex-col w-full relative">
+        {header && (
+          <div className="w-full flex items-center justify-between border-b-[1px] border-secondary px-2 py-1">
+            <p className="text-[1.25rem]">{header}</p>
+            <IconButton
+              className="p-2 hover:bg-secondary rounded-md"
+              needTooltip={true}
+              tooltipPlaceholder={"close"}
+              tooltipDirection="top"
+              onClick={() => {
+                closeFn();
+                setShouldShow(false);
+              }}
+            >
+              <RxCross2 />
+            </IconButton>
+          </div>
+        )}
+        {children}
+        {!header && (
+          <div className="absolute top-1 right-1">
+            <IconButton
+              className="bg-transparent rounded-md hover:bg-secondary w-fit h-fit px-2 py-2"
+              onClick={() => {
+                closeFn();
+                setShouldShow(false);
+              }}
+            >
+              <RxCross2 />
+            </IconButton>
+          </div>
+        )}
+      </div>
     </div>,
     modalRoot
   );

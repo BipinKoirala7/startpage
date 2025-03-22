@@ -8,6 +8,8 @@ type TextAreaPropsT = {
   onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   placeholder?: string;
   rows?: number;
+  ref?: React.Ref<HTMLTextAreaElement>;
+  preventDefaultEnter?: boolean;
 };
 
 function TextArea({
@@ -17,14 +19,24 @@ function TextArea({
   className,
   onChange,
   placeholder,
+  preventDefaultEnter,
 }: TextAreaPropsT) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-
+  useEffect(() => {
+    if (textAreaRef.current && preventDefaultEnter) {
+      textAreaRef.current.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+        }
+      });
+    }
+  }, [textAreaRef, preventDefaultEnter]);
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = "auto";
       textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
     }
+    textAreaRef.current?.focus();
   }, [value]);
   return (
     <textarea

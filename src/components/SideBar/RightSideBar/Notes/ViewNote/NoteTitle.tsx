@@ -10,7 +10,7 @@ function NoteTitle({ noteInfo, onChange }: noteTitlePropsT) {
   return (
     <TextArea
       placeholder="Title..."
-      className="text-[1.25rem] h-fit"
+      className="text-[1.25rem] h-fit w-[90%]"
       value={noteInfo.note_title}
       onChange={onChange}
     />

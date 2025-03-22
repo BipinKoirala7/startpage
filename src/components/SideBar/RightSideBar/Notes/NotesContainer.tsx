@@ -36,7 +36,7 @@ function NotesContainer() {
   const notes = useNoteStore((state) => state.notes);
   const loadLinks = useNoteStore((state) => state.loadNotes);
 
-  console.log(notes)
+  console.log(notes);
 
   useEffect(() => {
     if (data) {
@@ -49,8 +49,7 @@ function NotesContainer() {
   }, [notes]);
 
   return (
-    <div className="flex flex-col gap-2 px-1 w-full h-full">
-      <p className="text-[1.25rem]">Notes</p>
+    <div className="flex flex-col gap-2 w-full h-full px-2 py-2">
       <div className="flex items-center gap-2 bg-secondary rounded-md px-2 py-1 w-full">
         <CiSearch className="text-[1.25rem] text-text" />
         <Input
@@ -60,7 +59,7 @@ function NotesContainer() {
           onChange={(e) => setSearch(e.target.value)}
         />
       </div>
-      <div className="rounded-lg grid grid-cols-2 gap-4 overflow-y-auto p-1">
+      <div className="rounded-lg grid grid-cols-2 gap-4 overflow-y-auto ">
         {isLoading ? (
           <SkeletonUI count={4} width={150} height={100} />
         ) : isError ? (

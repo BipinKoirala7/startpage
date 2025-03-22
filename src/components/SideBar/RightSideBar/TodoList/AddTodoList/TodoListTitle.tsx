@@ -11,7 +11,7 @@ function TodoListTitle({ todoList, setTodoList }: TodoListTitlePropsT) {
     <Input
       type="text"
       placeholder="Title..."
-      className="w-full bg-transparent text-[1.25rem] p-0"
+      className="w-full bg-transparent text-[1.25rem]"
       value={todoList.todo_list_title}
       onChange={(e) => {
         setTodoList((prev) => ({
