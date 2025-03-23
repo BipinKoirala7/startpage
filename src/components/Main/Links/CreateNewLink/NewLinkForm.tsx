@@ -2,65 +2,62 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { v4 as uuid } from "uuid";
 
-import { apiResponseT, linkT } from "../../../../types";
+import { linkT } from "../../../../types";
 import Input from "../../../UI/Input";
 import IconButton from "../../../UI/Buttons/IconButton";
 import useFolderStore from "../../../../store/folderStore";
 import useLinkStore from "../../../../store/linkStore";
 import { getUrl } from "../../../../util/getIconUrl";
+import { createNewLink } from "../../../../util/LinkFunctions";
+import { getShortLink } from "../../../../util/util";
 
 type LinkFormPropsT = {
   closeMenu: () => void;
 };
 
 function NewLinkForm({ closeMenu }: LinkFormPropsT) {
-  const selected_folder_id = useFolderStore(
-    (state) => state.selectedFolder?.folder_id
+  const selected_folder_id = useFolderStore((state) =>
+    state.selectedFolder ? state.selectedFolder.folder_id : null
   );
   const addLinks = useLinkStore((state) => state.addLink);
 
   const [linkInfo, setLinkInfo] = useState<linkT>({
-    link_id: "",
-    folder_id: "",
+    link_id: uuid(),
+    folder_id: selected_folder_id || "",
     link_name: "",
     link_url: "",
     link_icon_url: null,
     link_background_color: null,
-    created_At: "",
+    created_at: new Date().toISOString(),
   });
 
   const MutateFn = async () => {
     try {
-      const response = await fetch(
-        import.meta.env.VITE_BASE_API_URL + "/links/create",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(linkInfo),
-        }
-      );
-      if (!response.ok) {
-        throw new Error(response.statusText);
+      const data = await createNewLink(linkInfo);
+      return data;
+    } catch (error) {
+      if (error instanceof Error) {
+        throw new Error(error.message || "An unexpected error occurred.");
+      } else {
+        throw new Error("Error while creatng a link");
       }
-      const result: apiResponseT<linkT[]> = await response.json();
-      return result;
-    } catch {
-      throw new Error("Error while creatng a link");
     }
   };
 
-  const { mutate, isPending } = useMutation({
+  const { mutate, isPending, isError, error } = useMutation({
     mutationFn: MutateFn,
     onMutate: async () => {
       const urlData = await getUrl({ url: linkInfo.link_url });
-          setLinkInfo((prev) => {
-            return {
-              ...prev,
-              link_icon_url: urlData.data?.favicon as string || urlData.data?.image as string || null,
-            };
-          });
+      console.log(urlData);
+      setLinkInfo((prev) => {
+        return {
+          ...prev,
+          link_icon_url:
+            (urlData.data?.favicon as string) ||
+            (urlData.data?.image as string) ||
+            null,
+        };
+      });
       if (selected_folder_id) {
         setLinkInfo((prev) => {
           return {
@@ -72,12 +69,12 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
         });
       }
     },
-    onSuccess: () => {
+    onSuccess: async () => {
       addLinks(linkInfo);
       closeMenu();
     },
     onError: (error) => {
-      console.error(error);
+      throw new Error(error.message);
     },
   });
 
@@ -89,7 +86,7 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
         <div className="flex flex-col gap-2">
           <label htmlFor="link-name">Link Name:</label>
           <Input
-            className=""
+            className="px-2 py-1"
             type="text"
             id="link_name"
             name="link_name"
@@ -106,7 +103,7 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
         <div className="flex flex-col gap-2">
           <label htmlFor="link-url">Link Url:</label>
           <Input
-            className=""
+            className="px-2 py-1"
             type="text"
             id="link_url"
             name="link_url"
@@ -114,7 +111,7 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
               setLinkInfo((prev) => {
                 return {
                   ...prev,
-                  [e.target.name]: e.target.value,
+                  [e.target.name]: getShortLink(e.target.value),
                 };
               })
             }
@@ -123,7 +120,7 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
         <div className="flex flex-col gap-2">
           <label htmlFor="link_icon_url">Link Icon Url:</label>
           <Input
-            className=""
+            className="px-2 py-1"
             type="text"
             id="link_icon_url"
             name="link_icon_url"
@@ -139,20 +136,28 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
         </div>
         <div className="flex flex-col gap-2">
           <label htmlFor="link_background_color">Link Background Color:</label>
-          <Input
-            className=""
-            type="text"
-            id="link_background_color"
-            name="link_background_color"
-            onChange={(e) =>
-              setLinkInfo((prev) => {
-                return {
-                  ...prev,
-                  [e.target.name]: e.target.value,
-                };
-              })
-            }
-          />
+          <div className="flex gap-2 items-center bg-secondary rounded-[.25rem] w-full px-2">
+            <Input
+              className=" py-1 min-h-10"
+              type="color"
+              id="link_background_color"
+              name="link_background_color"
+              value={linkInfo.link_background_color || "#000000"}
+              onChange={(e) => {
+                const colorValue =
+                  e.target.value === "#000000" ? null : e.target.value;
+                setLinkInfo((prev) => {
+                  return {
+                    ...prev,
+                    [e.target.name]: colorValue,
+                  };
+                });
+              }}
+            />
+            <p className="text-neutral text-[0.9rem]">
+              Hex Color : {linkInfo.link_background_color || "Default"}
+            </p>
+          </div>
         </div>
       </div>
       <IconButton
@@ -161,6 +166,7 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
       >
         {isPending ? "..." : "Save"}
       </IconButton>
+      {isError && <div className="text-red-500">{error.message}</div>}
     </form>
   );
 }

@@ -18,14 +18,19 @@ function FolderInfoHeaders(props: InfoHeaderPropsT) {
         <img
           src={folder_icon_url}
           alt=""
-          className="aspect-square w-[7.5rem] object-cover"
+          className="aspect-square w-[7.5rem] object-cover "
         />
       ) : (
         <FcFolder className="text-[7.5rem] aspect-square" />
       )}
       <div className="flex flex-col gap-2 justify-center">
         <label htmlFor="folder_name">Folder Name:</label>
-        <Input type="text" className="" value={folder_name} disabled={!isEditMode}/>
+        <Input
+          type="text"
+          className="text-neutral"
+          value={folder_name}
+          disabled={!isEditMode}
+        />
       </div>
     </div>
   );

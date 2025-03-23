@@ -9,6 +9,7 @@ type BigButtonProps = {
   name: string;
   icon_link: string;
   onClick?: () => void;
+  className?: string;
 };
 
 function BigButton(props: BigButtonProps) {
@@ -22,7 +23,7 @@ function BigButton(props: BigButtonProps) {
   );
 
   if (!selected_folder_id) return null;
-  const { name, icon_link, onClick, link_id } = props;
+  const { name, icon_link, onClick, link_id, className } = props;
   function handleContextMenu(
     e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>
   ) {
@@ -32,11 +33,11 @@ function BigButton(props: BigButtonProps) {
   return (
     <div
       ref={menuParentElementRef}
-      className="relative rounded-[1rem]  border-[2px] bg-transparent border-primary flex"
+      className={`${className} relative rounded-[1rem] border-[2px] bg-transparent border-primary flex`}
       onContextMenu={handleContextMenu}
     >
       <button
-        className={`w-full transition-all duration-200 ease-linear text-ellipsis  aspect-[3/2] rounded-[.75rem] flex gap-2 flex-col  items-center justify-center relative
+        className={`w-full transition-all duration-200 ease-linear text-ellipsis  aspect-[3/2] rounded-[.75rem] flex gap-2 p-2 flex-col  items-center justify-center relative
         sm:
         md:
         lg:hover:bg-primary lg:hover:border-transparent

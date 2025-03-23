@@ -52,7 +52,7 @@ function Folders() {
   return (
     <div
       ref={parentElementRef}
-      className="relative flex items-center gap-4 overflow-hidden w-full "
+      className="relative flex items-center gap-4 overflow-hidden w-full h-full"
     >
       {isLoading ? (
         <>
@@ -61,7 +61,7 @@ function Folders() {
       ) : (
         <div
           ref={childrenElementRef}
-          className=" flex gap-4 overflow-x-auto max-w-full px-1 py-1 rounded-md items-center justify-between w-full
+          className=" flex gap-4 overflow-x-auto max-w-full px-4 items-center justify-between w-full h-full rounded-lg bg-surface
           sm:
           md:
           lg:

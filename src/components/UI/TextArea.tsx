@@ -10,6 +10,7 @@ type TextAreaPropsT = {
   rows?: number;
   ref?: React.Ref<HTMLTextAreaElement>;
   preventDefaultEnter?: boolean;
+  focus?:boolean
 };
 
 function TextArea({
@@ -20,6 +21,7 @@ function TextArea({
   onChange,
   placeholder,
   preventDefaultEnter,
+  focus
 }: TextAreaPropsT) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   useEffect(() => {
@@ -30,21 +32,22 @@ function TextArea({
         }
       });
     }
-  }, [textAreaRef, preventDefaultEnter]);
+  }, [preventDefaultEnter]);
+
   useEffect(() => {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = "auto";
       textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
     }
-    textAreaRef.current?.focus();
-  }, [value]);
+    if(focus) textAreaRef.current?.focus();
+  }, [focus, value]);
   return (
     <textarea
       ref={textAreaRef}
       name={name}
       id={id}
       value={value}
-      className={`${className} max-w-full bg-transparent text-text resize-none outline-none`}
+      className={`${className} max-w-full text-text resize-none outline-none`}
       onChange={onChange}
       placeholder={placeholder}
       rows={1}

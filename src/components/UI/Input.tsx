@@ -5,7 +5,7 @@ type InputPropsT = {
   name?: string;
   className: string;
   id?: string;
-  type: "text" | "number";
+  type: "text" | "number" | "color";
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
   disabled?: boolean;
   placeholder?: string;
@@ -21,7 +21,7 @@ const Input = forwardRef<HTMLInputElement, InputPropsT>((props, ref) => {
       value={value}
       type={type}
       onChange={onChange}
-      className={`${className} bg-secondary text-text rounded-md outline-none border-none`}
+      className={`${className} bg-secondary  rounded-[0.25rem] outline-none px-2 py-1border-none`}
       disabled={disabled}
       name={name}
       placeholder={placeholder}

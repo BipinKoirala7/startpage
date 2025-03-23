@@ -1,11 +1,12 @@
-import { linkT } from "../types";
+import { apiResponseT, linkT } from "../types";
 
 export async function getLink(folder_id: string, link_id: string) {
     const response = await fetch(`${import.meta.env.VITE_BASE_API_URL}/links/${folder_id}/${link_id}`);
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-    const result = await response.json();
+    const result: apiResponseT<linkT[]> = await response.json();
+  if (result.error) throw new Error(result.message);
     return result;
 }
 
@@ -22,11 +23,12 @@ export async function deleteLink(folder_id: string, link_id: string) {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-  const result = await response.json();
+  const result: apiResponseT<linkT[]> = await response.json();
+  if (result.error) throw new Error(result.message);
   return result;
 }
 
-export async function createLink(link: linkT) {
+export async function createNewLink(link: linkT) {
   const response = await fetch(
     `${import.meta.env.VITE_BASE_API_URL}/links/create`,
     {
@@ -40,7 +42,8 @@ export async function createLink(link: linkT) {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-  const result = await response.json();
+  const result: apiResponseT<linkT[]> = await response.json();
+  if (result.error) throw new Error(result.message);
   return result;
 }
 
@@ -61,7 +64,8 @@ export async function updateLink(folder_id:string,link_id:string,new_value:strin
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-  const result = await response.json();
+  const result: apiResponseT<linkT[]> = await response.json();
+  if (result.error) throw new Error(result.message);
   return result;
 }
 
@@ -70,6 +74,7 @@ export async function getAllLinks(folder_id: string) {
   if (!response.ok) {
     throw new Error(response.statusText);
   }
-  const result = await response.json();
+  const result: apiResponseT<linkT[]> = await response.json();
+  if(result.error) throw new Error(result.message);
   return result;
 }

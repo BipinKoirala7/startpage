@@ -100,7 +100,7 @@ function Menu({
         case "right":
           top =
             parentRect.top +
-            (parentRect.width * 1) / 2 -
+            (parentRect.height * 1) / 2 -
             (modalContainerRef.current!.offsetHeight * 1) / 2 +
             "px";
           left = parentRect.right + (parentRect.width * 1) / 5 + "px";
@@ -202,7 +202,7 @@ function Menu({
     >
       <div className="flex flex-col w-full relative">
         {header && (
-          <div className="w-full flex items-center justify-between border-b-[1px] border-secondary px-2 py-1">
+          <div className="w-full flex items-center justify-between border-b-[1px] border-secondary px-1 pl-3 py-1">
             <p className="text-[1.25rem]">{header}</p>
             <IconButton
               className="p-2 hover:bg-secondary rounded-md"

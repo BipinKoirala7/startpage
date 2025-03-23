@@ -54,3 +54,18 @@ export function useModalContext() {
   }
   return context;
 }
+
+export function getFullLink(link:string) {
+  if (link.includes("https")) return link;
+  else if (link.includes("www")) return "https://" + link;
+  else return "https://" + "www." + link;
+}
+
+export function getShortLink(link:string) {
+  if (link.includes("https://")) {
+    const newLink = link.split("https://")[1];
+    if (newLink.includes("www.")) return newLink.split("www.")[1];
+    else return newLink;
+  } else if (link.includes("www.")) return link.split("www.")[1];
+  else return link;
+}

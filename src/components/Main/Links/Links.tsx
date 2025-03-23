@@ -28,7 +28,7 @@ function Links() {
         <LinksHeader />
         <LinksOptions />
       </div>
-      <div className="w-full grow-0 overflow-y-hidden">
+      <div className="w-full grow-0 overflow-y-hidden h-full">
         <LinksContainer />
       </div>
     </div>

@@ -17,7 +17,7 @@ function FolderOptions() {
         <>
           <div
             id="folderOptions-container"
-            className="flex gap-4 overflow-x-auto max-w-full py-2 
+            className="flex gap-4 overflow-x-auto max-w-full py-2
             sm:
             md:
             lg:
@@ -40,7 +40,7 @@ function FolderOptions() {
           </div>
         </>
       ) : (
-        <div className="w-full h-full flex items-center justify-center gap-4">
+        <div className="w-full h-full flex items-center justify-center gap-4 py-3">
           No folders!{" "}
           {
             <IconButton className={`gap-2 hover:bg-primary p-2 rounded-md`}>

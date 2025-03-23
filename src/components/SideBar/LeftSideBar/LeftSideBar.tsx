@@ -1,6 +1,6 @@
 import "../../../App.css";
 
-import CreateLinkContainer from "./CreateLinkContainer";
+import CreateFolderContainer from "./CreateFolderContainer";
 import LinkContainer from "./LinkContainer";
 import SettingsButton from "./SettingsButton";
 
@@ -14,7 +14,7 @@ function LeftSideBar() {
       lg:
       "
     >
-      <CreateLinkContainer />
+      <CreateFolderContainer />
       <LinkContainer />
       <SettingsButton />
     </div>
