@@ -7,7 +7,7 @@ export async function getLink(folder_id: string, link_id: string) {
     }
     const result: apiResponseT<linkT[]> = await response.json();
   if (result.error) throw new Error(result.message);
-    return result;
+  return result;
 }
 
 export async function deleteLink(folder_id: string, link_id: string) {
@@ -43,6 +43,7 @@ export async function createNewLink(link: linkT) {
     throw new Error(response.statusText);
   }
   const result: apiResponseT<linkT[]> = await response.json();
+  console.log(result)
   if (result.error) throw new Error(result.message);
   return result;
 }

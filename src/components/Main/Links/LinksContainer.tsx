@@ -80,7 +80,7 @@ function LinksContainer() {
         const { link_name, link_icon_url, link_url, link_id } = link;
         return (
           <BigButton
-            className=" h-fitl"
+            className=" h-fit"
             key={link_id}
             name={link_name}
             link_id={link_id}

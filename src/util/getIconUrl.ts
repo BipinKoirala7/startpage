@@ -4,7 +4,7 @@ type getUrlPropsT = {
   url: string;
 };
 
-async function getUrl({ url }: getUrlPropsT) {
+async function getIconUrl({ url }: getUrlPropsT) {
   const response = await fetch(
     `${import.meta.env.VITE_BASE_API_URL}/iconUrl?url=${url}`
   );
@@ -16,4 +16,4 @@ async function getUrl({ url }: getUrlPropsT) {
   return result;
 }
 
-export { getUrl };
+export { getIconUrl };

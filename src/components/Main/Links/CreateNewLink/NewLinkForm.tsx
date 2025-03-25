@@ -7,9 +7,8 @@ import Input from "../../../UI/Input";
 import IconButton from "../../../UI/Buttons/IconButton";
 import useFolderStore from "../../../../store/folderStore";
 import useLinkStore from "../../../../store/linkStore";
-import { getUrl } from "../../../../util/getIconUrl";
-import { createNewLink } from "../../../../util/LinkFunctions";
-import { getShortLink } from "../../../../util/util";
+import { createNewLink, getLink } from "../../../../util/LinkFunctions";
+import { getFullLink, } from "../../../../util/util";
 
 type LinkFormPropsT = {
   closeMenu: () => void;
@@ -34,6 +33,8 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
   const MutateFn = async () => {
     try {
       const data = await createNewLink(linkInfo);
+      console.log("New link is created")
+      console.log(data);
       return data;
     } catch (error) {
       if (error instanceof Error) {
@@ -46,32 +47,14 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
 
   const { mutate, isPending, isError, error } = useMutation({
     mutationFn: MutateFn,
-    onMutate: async () => {
-      const urlData = await getUrl({ url: linkInfo.link_url });
-      console.log(urlData);
-      setLinkInfo((prev) => {
-        return {
-          ...prev,
-          link_icon_url:
-            (urlData.data?.favicon as string) ||
-            (urlData.data?.image as string) ||
-            null,
-        };
-      });
-      if (selected_folder_id) {
-        setLinkInfo((prev) => {
-          return {
-            ...prev,
-            link_id: uuid(),
-            folder_id: selected_folder_id,
-            created_At: new Date().toISOString(),
-          };
-        });
-      }
-    },
     onSuccess: async () => {
-      addLinks(linkInfo);
-      closeMenu();
+      if (selected_folder_id) {
+        const data = await getLink(selected_folder_id || "", linkInfo.link_id);
+        if(data.data && data.data.length > 0) {
+          addLinks(data.data[0])
+        }
+        closeMenu()
+      }
     },
     onError: (error) => {
       throw new Error(error.message);
@@ -111,7 +94,7 @@ function NewLinkForm({ closeMenu }: LinkFormPropsT) {
               setLinkInfo((prev) => {
                 return {
                   ...prev,
-                  [e.target.name]: getShortLink(e.target.value),
+                  [e.target.name]: getFullLink(e.target.value),
                 };
               })
             }
